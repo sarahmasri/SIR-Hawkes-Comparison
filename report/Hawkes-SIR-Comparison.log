@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.25)  30 JUL 2024 20:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.25)  2 AUG 2024 17:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -539,67 +539,67 @@ Package natbib Warning: Citation `Rizoiu2018' on page 2 undefined on input line
 
 
 Package natbib Warning: Citation `Rizoiu2018' on page 2 undefined on input line
- 100.
+ 101.
 
 
 Package natbib Warning: Citation `Rizoiu2018' on page 2 undefined on input line
- 105.
+ 106.
 
 
 Package natbib Warning: Citation `Dahlqvist2022' on page 2 undefined on input l
-ine 109.
+ine 111.
 
 
 Package natbib Warning: Citation `Rizoiu2018' on page 2 undefined on input line
- 118.
+ 121.
 
 
 Package natbib Warning: Citation `Reinhart2018' on page 2 undefined on input li
-ne 118.
+ne 121.
 
 [2]
 
 Package natbib Warning: Citation `Rizoiu2018' on page 3 undefined on input line
- 132.
+ 135.
 
 
 Package natbib Warning: Citation `Bertozzi2020' on page 3 undefined on input li
-ne 142.
+ne 145.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 142--144
+Underfull \hbox (badness 10000) in paragraph at lines 145--147
 
  []
 
 
 Package natbib Warning: Citation `Bertozzi2020' on page 3 undefined on input li
-ne 146.
+ne 149.
 
 
 Package natbib Warning: Citation `Bertozzi2020' on page 3 undefined on input li
-ne 162.
+ne 165.
 
 
 Package natbib Warning: Citation `Rizoiu2018' on page 3 undefined on input line
- 177.
+ 180.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--181
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 188--195
+Underfull \hbox (badness 10000) in paragraph at lines 180--184
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--195
+Underfull \hbox (badness 10000) in paragraph at lines 191--198
 
  []
 
 
-Overfull \hbox (22.26178pt too wide) in paragraph at lines 188--195
+Underfull \hbox (badness 10000) in paragraph at lines 191--198
+
+ []
+
+
+Overfull \hbox (22.26178pt too wide) in paragraph at lines 191--198
 \OT1/cmr/m/it/12 Let $\OMS/cmsy/m/n/12 H[]$ \OT1/cmr/m/it/12 be the his-tory of
  the bi-vari-ate epi-demic pro-cess up to time $\OML/cmm/m/it/12 t$ \OT1/cmr/m/
 it/12 such that $\OMS/cmsy/m/n/12 H[] \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/
@@ -609,73 +609,78 @@ cmm/m/it/12 t[]; t[]; [] ; t[]; t[]; []\OMS/cmsy/m/n/12 g$\OT1/cmr/m/it/12 .
 [3]
 
 Package natbib Warning: Citation `Kresin2022' on page 4 undefined on input line
- 206.
+ 209.
 
 
 Package natbib Warning: Citation `Kresin2022' on page 4 undefined on input line
- 213.
+ 216.
 
 
 Package natbib Warning: Citation `Lamprinakou2023' on page 4 undefined on input
- line 213.
+ line 216.
 
 [4]
 
 Package natbib Warning: Citation `Rizoiu2018' on page 5 undefined on input line
- 234.
+ 237.
 
 
 Package natbib Warning: Citation `Rizoiu2018' on page 5 undefined on input line
- 251.
+ 254.
 
 
 Package natbib Warning: Citation `Kresin2022' on page 5 undefined on input line
- 257.
-
-
-Package natbib Warning: Citation `Rizoiu2018' on page 5 undefined on input line
  260.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 260--262
+Package natbib Warning: Citation `Rizoiu2018' on page 5 undefined on input line
+ 263.
 
- []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 264--268
+Underfull \hbox (badness 10000) in paragraph at lines 263--265
 
  []
 
 [5]
+Underfull \hbox (badness 10000) in paragraph at lines 267--271
+
+ []
+
 
 Package natbib Warning: Citation `Rizoiu2018' on page 6 undefined on input line
- 271.
+ 274.
 
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 280
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 283
 .
 (/usr/local/texlive/2021/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ) [6]
 
 Package natbib Warning: Citation `Kresin2022' on page 7 undefined on input line
- 316.
+ 319.
 
 
 Package natbib Warning: Citation `Rizoiu2018' on page 7 undefined on input line
- 316.
+ 319.
 
-[7]
+[7] [8]
 No file Hawkes-SIR-Comparison.bbl.
 
 Package natbib Warning: There were undefined citations.
 
 (./Hawkes-SIR-Comparison.aux)
-Package rerunfilecheck Info: File `Hawkes-SIR-Comparison.out' has not changed.
-(rerunfilecheck)             Checksum: 9FC83733E292193B88F43F48F03D4922;1561.
+
+Package rerunfilecheck Warning: File `Hawkes-SIR-Comparison.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Hawkes-SIR-Comparison.out':
+(rerunfilecheck)             Before: 9FC83733E292193B88F43F48F03D4922;1561
+(rerunfilecheck)             After:  41FDF04FCF65C595B63A54C6D13E6CF2;1625.
  ) 
 Here is how much of TeX's memory you used:
- 11927 strings out of 478994
- 181535 string characters out of 5858184
+ 11929 strings out of 478994
+ 181550 string characters out of 5858184
  586239 words of memory out of 5000000
  29154 multiletter control sequences out of 15000+600000
  413543 words of font info for 67 fonts, out of 8000000 for 9000
@@ -695,10 +700,10 @@ usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
 sr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
 /local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/
 local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Hawkes-SIR-Comparison.pdf (7 pages, 163494 bytes).
+Output written on Hawkes-SIR-Comparison.pdf (8 pages, 163640 bytes).
 PDF statistics:
- 184 PDF objects out of 1000 (max. 8388607)
- 159 compressed objects within 2 object streams
- 48 named destinations out of 1000 (max. 500000)
+ 190 PDF objects out of 1000 (max. 8388607)
+ 164 compressed objects within 2 object streams
+ 50 named destinations out of 1000 (max. 500000)
  97 words of extra memory for PDF output out of 10000 (max. 10000000)
 
