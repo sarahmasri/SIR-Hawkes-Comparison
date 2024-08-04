@@ -1,17 +1,17 @@
 ## SIR-Hawkes: Linking Epidemic Models and Hawkes Processes to Model Diffusions in Finite Populations
-setwd("/Users/sarahmasri/Desktop/Research/MSc/sir-hawkes/")
+setwd("/Users/sarahmasri/Desktop/Research/MSc/SIR-Hawkes-Comparison/")
 
 
 ## 1: Preliminary (required packages)
 library(parallel)
-source('scripts/functions-SIR-HawkesN.R')
-source('scripts/functions-size-distribution.R')
+source('scripts/functions/functions-SIR-HawkesN-Rizoiu2018.R')
+source('scripts/functions/functions-size-distribution-Rizoiu2018.R')
 
 
 
 
 
-## 2:  Stochachastic R simulation
+## 2:  Stochastic R simulation
 ## simulate 20 stochastic SIR relizations
 params.S <- c(N = 1300, I.0 = 300, gamma = 0.2, beta = 1)
 nsim <- 20
