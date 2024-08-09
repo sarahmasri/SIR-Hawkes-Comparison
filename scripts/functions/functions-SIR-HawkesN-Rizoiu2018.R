@@ -180,7 +180,7 @@ fitSeries <- function(history, params_init) {
   return(model)
 }
 
-find.optimal.parameters <- function(history, init_params = c(K = 0.1, c = 0.1, theta = 0.1, N = 1000), 
+find.optimal.parameters <- function(history, init_params, # = c(K = 0.1, c = 0.1, theta = 0.1, N = 1000), 
                                     lowerBound = c(K = 0, c = .Machine$double.eps, theta = 0, N = 1), 
                                     upperBound = c(K = Inf, c = 300, theta = Inf, N = Inf),
                                     iterations = 5000, ...) {
@@ -204,16 +204,29 @@ find.optimal.parameters <- function(history, init_params = c(K = 0.1, c = 0.1, t
   if ("N" %in% names(init_params) && init_params["N"] < nrow(history))
     init_params["N"] <- nrow(history)
   
-  res <- lbfgs(x0 = unlist(init_params),
+  #res <- lbfgs(x0 = unlist(init_params),
+  #             fn = neg.log.likelihood,
+  #             gr = closedGradient,
+  #             lower = lowerBound,
+  #             upper = upperBound,
+  #             control = list(maxeval = iterations, xtol_rel = "1e-8"),
+  #             history = history,  ...)
+  
+  
+  
+  res <- optim(par = unlist(init_params),
                fn = neg.log.likelihood,
                gr = closedGradient,
+               method = "L-BFGS-B",
                lower = lowerBound,
                upper = upperBound,
-               control = list(maxeval = iterations, xtol_rel = "1e-8"),
-               history = history,  ...)
+               control = list(maxit = iterations, factr = "1e-8"),
+               history=history)
+  
+  print(res)
   
   names(res$par) <- names(init_params)
-  res$value <- neg.log.likelihood(params = res$par, history = history, ... )
+  res$value <- neg.log.likelihood(params = res$par, history = history) #, ... )
   
   return(res)
 }

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.25)  2 AUG 2024 17:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.25)  7 AUG 2024 20:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -577,29 +577,29 @@ ne 149.
 
 
 Package natbib Warning: Citation `Bertozzi2020' on page 3 undefined on input li
-ne 165.
+ne 167.
 
 
 Package natbib Warning: Citation `Rizoiu2018' on page 3 undefined on input line
- 180.
+ 183.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--184
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 191--198
+Underfull \hbox (badness 10000) in paragraph at lines 183--187
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 191--198
+Underfull \hbox (badness 10000) in paragraph at lines 194--201
 
  []
 
 
-Overfull \hbox (22.26178pt too wide) in paragraph at lines 191--198
+Underfull \hbox (badness 10000) in paragraph at lines 194--201
+
+ []
+
+
+Overfull \hbox (22.26178pt too wide) in paragraph at lines 194--201
 \OT1/cmr/m/it/12 Let $\OMS/cmsy/m/n/12 H[]$ \OT1/cmr/m/it/12 be the his-tory of
  the bi-vari-ate epi-demic pro-cess up to time $\OML/cmm/m/it/12 t$ \OT1/cmr/m/
 it/12 such that $\OMS/cmsy/m/n/12 H[] \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/
@@ -609,59 +609,65 @@ cmm/m/it/12 t[]; t[]; [] ; t[]; t[]; []\OMS/cmsy/m/n/12 g$\OT1/cmr/m/it/12 .
 [3]
 
 Package natbib Warning: Citation `Kresin2022' on page 4 undefined on input line
- 209.
+ 219.
 
 
-Package natbib Warning: Citation `Kresin2022' on page 4 undefined on input line
- 216.
-
-
-Package natbib Warning: Citation `Lamprinakou2023' on page 4 undefined on input
- line 216.
+Package natbib Warning: Citation `Rizoiu2018' on page 4 undefined on input line
+ 219.
 
 [4]
 
-Package natbib Warning: Citation `Rizoiu2018' on page 5 undefined on input line
- 237.
-
-
-Package natbib Warning: Citation `Rizoiu2018' on page 5 undefined on input line
- 254.
+Package natbib Warning: Citation `Kresin2022' on page 5 undefined on input line
+ 277.
 
 
 Package natbib Warning: Citation `Kresin2022' on page 5 undefined on input line
- 260.
+ 284.
 
 
-Package natbib Warning: Citation `Rizoiu2018' on page 5 undefined on input line
- 263.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 263--265
-
- []
+Package natbib Warning: Citation `Lamprinakou2023' on page 5 undefined on input
+ line 284.
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 267--271
 
- []
+Package natbib Warning: Citation `Rizoiu2018' on page 6 undefined on input line
+ 305.
 
 
 Package natbib Warning: Citation `Rizoiu2018' on page 6 undefined on input line
- 274.
+ 322.
 
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 283
+
+Package natbib Warning: Citation `Kresin2022' on page 6 undefined on input line
+ 328.
+
+
+Package natbib Warning: Citation `Rizoiu2018' on page 6 undefined on input line
+ 331.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 331--333
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 336--340
+
+ []
+
+[6]
+
+Package natbib Warning: Citation `Rizoiu2018' on page 7 undefined on input line
+ 343.
+
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 352
 .
 (/usr/local/texlive/2021/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [6]
-
-Package natbib Warning: Citation `Kresin2022' on page 7 undefined on input line
- 319.
-
+)
 
 Package natbib Warning: Citation `Rizoiu2018' on page 7 undefined on input line
- 319.
+ 386.
 
 [7] [8]
 No file Hawkes-SIR-Comparison.bbl.
@@ -669,20 +675,14 @@ No file Hawkes-SIR-Comparison.bbl.
 Package natbib Warning: There were undefined citations.
 
 (./Hawkes-SIR-Comparison.aux)
-
-Package rerunfilecheck Warning: File `Hawkes-SIR-Comparison.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Hawkes-SIR-Comparison.out':
-(rerunfilecheck)             Before: 9FC83733E292193B88F43F48F03D4922;1561
-(rerunfilecheck)             After:  41FDF04FCF65C595B63A54C6D13E6CF2;1625.
+Package rerunfilecheck Info: File `Hawkes-SIR-Comparison.out' has not changed.
+(rerunfilecheck)             Checksum: B6ED133956B60B4FC48FE853E4300D3C;1824.
  ) 
 Here is how much of TeX's memory you used:
- 11929 strings out of 478994
- 181550 string characters out of 5858184
- 586239 words of memory out of 5000000
- 29154 multiletter control sequences out of 15000+600000
+ 11935 strings out of 478994
+ 181630 string characters out of 5858184
+ 585239 words of memory out of 5000000
+ 29159 multiletter control sequences out of 15000+600000
  413543 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,12n,80p,640b,411s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -700,10 +700,10 @@ usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
 sr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
 /local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/
 local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Hawkes-SIR-Comparison.pdf (8 pages, 163640 bytes).
+Output written on Hawkes-SIR-Comparison.pdf (8 pages, 165679 bytes).
 PDF statistics:
- 190 PDF objects out of 1000 (max. 8388607)
- 164 compressed objects within 2 object streams
- 50 named destinations out of 1000 (max. 500000)
- 97 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 200 PDF objects out of 1000 (max. 8388607)
+ 174 compressed objects within 2 object streams
+ 51 named destinations out of 1000 (max. 500000)
+ 113 words of extra memory for PDF output out of 10000 (max. 10000000)
 

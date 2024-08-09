@@ -74,7 +74,7 @@ simhistory <- sapply(X = 1:nsim, FUN = function(i) {
 params.fit.start <- c(K = 1, c = 0.1, theta = 0.1, N = 1000)
 
 # fit the event series with HawkesN
-.cl <- makeCluster(spec = min(20, detectCores()), type = 'FORK')
+.cl <- makeCluster(spec = min(nsim, detectCores()), type = 'FORK')
 results <- parSapply(cl = .cl, X = 1:nsim, FUN = function(i) {
   history.S <- as.data.frame(simhistory[,i])
   fitted.model <- fitSeries(history = history.S, params.fit.start)
@@ -100,7 +100,7 @@ prnt <- rbind(params.S[c('N', 'gamma', 'beta')],
               apply(X = res[, c('N', 'gamma', 'beta')], MARGIN = 2, FUN = mean, na.rm = T),
               apply(X = res[, c('N', 'gamma', 'beta')], MARGIN = 2, FUN = sd, na.rm = T))
 rownames(prnt) <- c('theoretical', 'median', 'sd')
-print(prnt[, c('N', 'gamma', 'beta')], digits = 2)
+print(prnt, digits = 2)
 
 
 

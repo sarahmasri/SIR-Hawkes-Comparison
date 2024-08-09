@@ -162,6 +162,8 @@ where $\beta$ is the transmission rate constant, $\gamma$ is the recovery rate c
 
 
 \begin{definition}[SEIR Model]
+\label{SEIR}
+
 The SEIR model describes a class compartmental model accounting for an 'exposed' compartment \cite{Bertozzi2020}. 
 
 $$
@@ -177,6 +179,7 @@ where $\beta$ is the transmission rate constant, $\gamma$ is the recovery rate c
 \vspace{3mm}
 
 \begin{definition}[Stochastic SIR]
+\label{stochastic-SIR}
 One representation of the stochastic SIR model is the bivariate point process \cite{Rizoiu2018}. Only two possible events may occur: infection and recovery. In this representation, the $j$-th infected individual in the SIR process gets infected at time $_i^I$ and recovers at time $t_j^R$. 
 \\
 \\
@@ -200,6 +203,71 @@ $$
 \lambda^R(t) = \gamma I_t
 $$  
 \end{definition}
+
+
+
+
+
+
+
+
+
+\subsection{Literature Review}
+
+Both the Hawkes and SIR models for SARS-CoV-2 have been explored in literature. Our particular interest is the comparison and connection between the two models. It is natural to compare and contrast the performance of each of these models, but analysis on their relationship and possible convergence is limited. 
+
+\cite{Kresin2022} discusses the relationship between the two models by mean of the reproduction number. The reproduction number notably used in the SIR model is naturally connected to the productivity constant $K$ in Hawkes, as they can both be interpreted as the expected number of infected individuals. This paper also claims that assuming an exponential triggering kernel, the intensity of the Hawkes point process is a continuous time analog to the discrete stochastic SIR model. This claim is proved in \cite{Rizoiu2018}. Further extension on this claim is limited in literature. 
+
+Literature regarding the use of the Hawkes process and SIR model varies in approaches and application. 
+
+
+
+
+
+
+
+
+
+
+Scaling Hawkes processes to one million COVID-19 Cases
+Holbrook
+- Likelihood based inference requires $O(N^2)$ floating point operations for N cases
+- Applies two spatiotemporal Hawkes models to the analysis of one million COVID-19 cases in the US
+
+
+Opinion Market Model: stemming far-right opinion spread using positive interventions
+Rizoiu
+- Demonstrate the convergence of proposed estimation scheme on a synthetic dataset
+
+
+Stratified epidemic model using a latent marked Hawkes process
+Lamprinakou and Sandy
+- Extend unstructured homogeneously mixing epidemic model to a finite population stratified by age bands
+- Use latent marked Hawkes process
+- Apply KDPF
+
+Briding the COVID-19 data and the epidemiological model using the time-varying parameter SIRD model
+Cakmakli and Simsek
+- Extends canonical model of epidemiology SIRD model to allow for time-varying parameters for real time measurement and prediction of COVID19
+
+
+A stochastic model for the early stages of highly contagious epidemics by using a state dependent point process
+Casillas
+
+
+Estimating COVID transmission time using Hawks point process
+Schoenberg
+
+
+Lecture notes for computational modelling of contagion and epidemics: a companion to the rule of contagion 
+Mohler
+
+
+Some statistical problems involved in foforecasting and estimating the spread of COVID19 using the Hawkes point processes and SEIR models
+
+
+
+
 
 
 \section{Comparison and Connection}
@@ -264,6 +332,7 @@ It is claimed that most compartmental models can be represented using a renewal 
 \\
 
 \begin{theorem}
+\label{Thrm1}
 Suppose the new infections in a stochastic SIR process of parameters $\{\beta, \gamma, N\}$ follow a point process of intensity $\lambda^I(t)$. Suppose also that the events in a HawkesN process with parameters $\{\mu, \kappa, \theta, N\}$ have intensity $\lambda^H (t)$. 
 \\
 \\
@@ -307,72 +376,39 @@ $$
 
 %--------
 
-TODO: 
-- Hawkes likelihood
-- appendix C.3 equivalence to stochastic SIR
+%TODO: 
+%- Hawkes likelihood
+%- appendix C.3 equivalence to stochastic SIR
 
 
-\subsection{Extensions in Literature}
+\subsubsection{Exploration of Triggering Kernel}
 
-Both the Hawkes and SIR models for SARS-CoV-2 have been explored in literature. Our particular interest is the comparison and connection between the two models. It is natural to compare and contrast the performance of each of these models, but analysis on their relationship and possible convergence is limited. 
+\cite{Rizoiu2018} throws equivalence in expectation between the intensities of the stochastic SIR and HawkesN models. We want to explore if any other choices in the triggering kernel $\phi(\cdot )$ of the HawkesN process yields more connection between the Hawkes model and other stochastic representations of other compartmental models. 
 
-\cite{Kresin2022} discusses the relationship between the two models by mean of the reproduction number. The reproduction number notably used in the SIR model is naturally connected to the productivity constant $K$ in Hawkes, as they can both be interpreted as the expected number of infected individuals. This paper also claims that assuming an exponential triggering kernel, the intensity of the Hawkes point process is a continuous time analog to the discrete stochastic SIR model. This claim is proved in \cite{Rizoiu2018}. Further extension on this claim is limited in literature. 
+First consider the SEIR model, in definition \ref{SEIR}. Consider the stochastic representation of this  model with random variables $S_t$, $E_t$, $I_t$, and $R_t$ associated with their respective compartments. Suppose the new infections in this stochastic SEIR process of intensity $\lambda^I(t)$, as in definition \ref{stochastic-SIR}.
 
-Literature regarding the use of the Hawkes process and SIR model varies in approaches and application. 
+Recall the $C_t$ is the counting process of the infection process and $R_t$ is the counting process of the recovery process. Then $C_t$ is the aggregate number of occurred infections, including individuals that may still be infectious. 
 
+$$
+C_t = N - S_t
+$$
 
+By definition, we have that $N = S_t + I_t + E_t + R_t$. It follows using the above that
 
-
-
-
-
-
-
-
-Scaling Hawkes processes to one million COVID-19 Cases
-Holbrook
-- Likelihood based inference requires $O(N^2)$ floating point operations for N cases
-- Applies two spatiotemporal Hawkes models to the analysis of one million COVID-19 cases in the US
+$$
+I_t =  C_t - E_t - R_t
+$$
 
 
-Opinion Market Model: stemming far-right opinion spread using positive interventions
-Rizoiu
-- Demonstrate the convergence of proposed estimation scheme on a synthetic dataset
-
-
-Stratified epidemic model using a latent marked Hawkes process
-Lamprinakou and Sandy
-- Extend unstructured homogeneously mixing epidemic model to a finite population stratified by age bands
-- Use latent marked Hawkes process
-- Apply KDPF
-
-Briding the COVID-19 data and the epidemiological model using the time-varying parameter SIRD model
-Cakmakli and Simsek
-- Extends canonical model of epidemiology SIRD model to allow for time-varying parameters for real time measurement and prediction of COVID19
-
-
-A stochastic model for the early stages of highly contagious epidemics by using a state dependent point process
-Casillas
-
-
-Estimating COVID transmission time using Hawks point process
-Schoenberg
-
-
-Lecture notes for computational modelling of contagion and epidemics: a companion to the rule of contagion 
-Mohler
-
-
-Some statistical problems involved in foforecasting and estimating the spread of COVID19 using the Hawkes point processes and SEIR models
+Note that when considered $C_t$ and $E_t + I_t$, the problem is reduced to Theorem \ref{Thrm1}
 
 
 
-
-
-
-
+We aim to write $S_t$ and $I_t$
 
 \section{Code}
+
+
 
 
 
