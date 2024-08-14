@@ -400,7 +400,10 @@ I_t =  C_t - E_t - R_t
 $$
 
 
-Note that when considered $C_t$ and $E_t + I_t$, the problem is reduced to Theorem \ref{Thrm1}
+Note that when considered $C_t$ and $E_t + I_t$, the problem is reduced to Theorem \ref{Thrm1}. 
+$$
+\lambda
+$$
 
 
 
@@ -408,13 +411,66 @@ We aim to write $S_t$ and $I_t$
 
 \section{Code}
 
+A total of 20 simulation SIR and HawkesN models are adapted from code provided by \citep{Rizoiu2018}. The code produces synthetic data suitable for the models of interest. The SIR data is represented with a set of unique timepoints. Each timepoint $t$ is associated with a number representing each compartment, $S_t$, $I_t$, $R_t$, and $C_t$, where $C_t = I_t + R_t$ is infection process. 
+ 
+The HawkesN data is transformed using the SIR data to be represented by the timepoints associated with each infection event. It is important to note that the code is adapted with the assumption that the total population size $N$ is known. Hence, any estimation of $N$ is omitted from the adapted code. 
+
+We aim to estimate $\beta$ and $\gamma$ in the SIR model, as well as $K$ and $\theta$ in the HawkesN. We plot the likelihood for each parameter. 
 
 
 
 
 
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{../figures/SIR_neg-log-likelihood-plot_beta.png}
+  \caption{$\beta$}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{../figures/SIR_neg-log-likelihood-plot_gamma.png}
+  \caption{$\gamma$}
+\end{subfigure}
+\caption{Negative log-likelihood plot of parameters for HawkesN model. }
+\label{fig:HawkesN-ll}
+\end{figure}
 
 
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{../figures/HawkesN_neg-log-likelihood-plot_K.png}
+  \caption{$K$}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{../figures/HawkesN_neg-log-likelihood-plot_theta.png}
+  \caption{$\theta$}
+\end{subfigure}
+\caption{Negative log-likelihood plot of parameters for HawkesN model. }
+\label{fig:HawkesN-ll}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{../figures/SIR_contour-plot_gamma_beta.png}
+  \caption{SIR}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{../figures/HawkesN_contour-plot_K_theta.png}
+  \caption{HawkesN}
+\end{subfigure}
+\caption{Contour plots of parameter negative log-likelihoods for HawkesN and SIR models. }
+\label{fig:contour}
+\end{figure}
 
 
 

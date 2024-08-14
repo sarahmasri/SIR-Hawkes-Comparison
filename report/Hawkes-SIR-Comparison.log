@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.25)  7 AUG 2024 20:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.25)  14 AUG 2024 13:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -440,7 +440,11 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@lastruleclass=\count292
 \@thisrulewidth=\dimen175
 )
-(./Hawkes-SIR-Comparison.aux)
+(./Hawkes-SIR-Comparison.aux
+
+LaTeX Warning: Label `fig:HawkesN-ll' multiply defined.
+
+)
 \openout1 = `Hawkes-SIR-Comparison.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
@@ -461,8 +465,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 62.
 LaTeX Font Info:    ... okay on input line 62.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 62.
 LaTeX Font Info:    ... okay on input line 62.
-
-(/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count293
 \scratchdimen=\dimen176
@@ -669,41 +672,94 @@ File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 Package natbib Warning: Citation `Rizoiu2018' on page 7 undefined on input line
  386.
 
-[7] [8]
+[7]
+
+Package natbib Warning: Citation `Rizoiu2018' on page 8 undefined on input line
+ 414.
+
+<../figures/SIR_neg-log-likelihood-plot_beta.png, id=135, 6022.5pt x 6022.5pt>
+File: ../figures/SIR_neg-log-likelihood-plot_beta.png Graphic file (type png)
+<use ../figures/SIR_neg-log-likelihood-plot_beta.png>
+Package pdftex.def Info: ../figures/SIR_neg-log-likelihood-plot_beta.png  used 
+on input line 428.
+(pdftex.def)             Requested size: 224.28072pt x 224.22583pt.
+<../figures/SIR_neg-log-likelihood-plot_gamma.png, id=137, 6022.5pt x 6022.5pt>
+
+File: ../figures/SIR_neg-log-likelihood-plot_gamma.png Graphic file (type png)
+<use ../figures/SIR_neg-log-likelihood-plot_gamma.png>
+Package pdftex.def Info: ../figures/SIR_neg-log-likelihood-plot_gamma.png  used
+ on input line 433.
+(pdftex.def)             Requested size: 224.28072pt x 224.22583pt.
+<../figures/HawkesN_neg-log-likelihood-plot_K.png, id=138, 6022.5pt x 6022.5pt>
+
+File: ../figures/HawkesN_neg-log-likelihood-plot_K.png Graphic file (type png)
+<use ../figures/HawkesN_neg-log-likelihood-plot_K.png>
+Package pdftex.def Info: ../figures/HawkesN_neg-log-likelihood-plot_K.png  used
+ on input line 446.
+(pdftex.def)             Requested size: 224.28072pt x 224.22583pt.
+<../figures/HawkesN_neg-log-likelihood-plot_theta.png, id=139, 6022.5pt x 6022.
+5pt>
+File: ../figures/HawkesN_neg-log-likelihood-plot_theta.png Graphic file (type p
+ng)
+<use ../figures/HawkesN_neg-log-likelihood-plot_theta.png>
+Package pdftex.def Info: ../figures/HawkesN_neg-log-likelihood-plot_theta.png  
+used on input line 451.
+(pdftex.def)             Requested size: 224.28072pt x 224.22583pt.
+<../figures/SIR_contour-plot_gamma_beta.png, id=140, 4818.0pt x 4818.0pt>
+File: ../figures/SIR_contour-plot_gamma_beta.png Graphic file (type png)
+<use ../figures/SIR_contour-plot_gamma_beta.png>
+Package pdftex.def Info: ../figures/SIR_contour-plot_gamma_beta.png  used on in
+put line 463.
+(pdftex.def)             Requested size: 249.2025pt x 249.14798pt.
+<../figures/HawkesN_contour-plot_K_theta.png, id=141, 4818.0pt x 4818.0pt>
+File: ../figures/HawkesN_contour-plot_K_theta.png Graphic file (type png)
+<use ../figures/HawkesN_contour-plot_K_theta.png>
+Package pdftex.def Info: ../figures/HawkesN_contour-plot_K_theta.png  used on i
+nput line 468.
+(pdftex.def)             Requested size: 249.2025pt x 249.14798pt.
+[8] [9 <../figures/SIR_neg-log-likelihood-plot_beta.png> <../figures/SIR_neg-lo
+g-likelihood-plot_gamma.png> <../figures/HawkesN_neg-log-likelihood-plot_K.png>
+ <../figures/HawkesN_neg-log-likelihood-plot_theta.png>]
 No file Hawkes-SIR-Comparison.bbl.
 
 Package natbib Warning: There were undefined citations.
 
-(./Hawkes-SIR-Comparison.aux)
+[10 <../figures/SIR_contour-plot_gamma_beta.png> <../figures/HawkesN_contour-pl
+ot_K_theta.png>] (./Hawkes-SIR-Comparison.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `Hawkes-SIR-Comparison.out' has not changed.
 (rerunfilecheck)             Checksum: B6ED133956B60B4FC48FE853E4300D3C;1824.
  ) 
 Here is how much of TeX's memory you used:
- 11935 strings out of 478994
- 181630 string characters out of 5858184
+ 12004 strings out of 478994
+ 183809 string characters out of 5858184
  585239 words of memory out of 5000000
- 29159 multiletter control sequences out of 15000+600000
- 413543 words of font info for 67 fonts, out of 8000000 for 9000
+ 29210 multiletter control sequences out of 15000+600000
+ 414583 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,12n,80p,640b,411s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,12n,80p,640b,614s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/sarahmasri/Library/texlive/2021/texmf-var/fonts/pk/ljfour/public/bbm
 /bbm12.600pk></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmbx10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmbx12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-mi12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
-i6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8
-.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.p
-fb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
-></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></
-usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
-sr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
-/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/
-local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Hawkes-SIR-Comparison.pdf (8 pages, 165679 bytes).
+mi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
+i12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
+6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.
+pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pf
+b></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></
+usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
+/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
+local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/lo
+cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/loc
+al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Hawkes-SIR-Comparison.pdf (10 pages, 3720558 bytes).
 PDF statistics:
- 200 PDF objects out of 1000 (max. 8388607)
- 174 compressed objects within 2 object streams
- 51 named destinations out of 1000 (max. 500000)
- 113 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 233 PDF objects out of 1000 (max. 8388607)
+ 191 compressed objects within 2 object streams
+ 56 named destinations out of 1000 (max. 500000)
+ 143 words of extra memory for PDF output out of 10000 (max. 10000000)
 

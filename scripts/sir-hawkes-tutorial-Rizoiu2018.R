@@ -25,6 +25,9 @@ as.data.frame(simdat[,1])[1:20,]
 
 
 
+N <- getN()
+
+
 
 
 ## 3: Fit stochastic SIR on simulated cascades
@@ -33,12 +36,12 @@ as.data.frame(simdat[,1])[1:20,]
 ## - apply LBFGS algorithm for optimizing the likelihood function of SIR model
 
 # initial fitting point for each execution
-params.fit.start <- c(N = 0.1, I.0 = 0.1, gamma = 0.1, beta = 0.1)
+params.fit.start <- c(I.0 = 0.1, gamma = 0.1, beta = 0.1)
 
 .cl <- makeCluster(spec = min(nsim, detectCores()), type = 'FORK')
 results <- parSapply(cl = .cl, X = 1:nsim, FUN = function(i) {
   mysim <- as.data.frame(simdat[, i])
-  return(fit.stochastic.sir(mysim, params.fit.start))
+  return(fit.stochastic.sir(mysim, params.fit.start, N))
 })
 stopCluster(.cl)
 
@@ -50,11 +53,25 @@ res$ll <- unlist(results[2,])
 complete_res <- res
 
 # let's see how well parameters were retreived
-prnt <- rbind(params.S[c('N', 'I.0', 'gamma', 'beta')], 
-              apply(X = complete_res[, c('N', 'I.0', 'gamma', 'beta')], MARGIN = 2, FUN = median),
-              apply(X = complete_res[, c('N', 'I.0', 'gamma', 'beta')], MARGIN = 2, FUN = sd))
+prnt <- rbind(params.S[c('I.0', 'gamma', 'beta')], 
+              apply(X = complete_res[, c('I.0', 'gamma', 'beta')], MARGIN = 2, FUN = median),
+              apply(X = complete_res[, c('I.0', 'gamma', 'beta')], MARGIN = 2, FUN = sd))
 rownames(prnt) <- c('theoretical', 'median', 'sd')
-print(prnt[, c('N', 'I.0', 'gamma', 'beta')], digits = 2)
+print(prnt[, c('I.0', 'gamma', 'beta')], digits = 2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -71,13 +88,13 @@ simhistory <- sapply(X = 1:nsim, FUN = function(i) {
 # model HawkesN on the simulated data following the same steps as SIR
 
 # start point 
-params.fit.start <- c(K = 1, c = 0.1, theta = 0.1, N = 1000)
+params.fit.start <- c(K = 1, c = 0.1, theta = 0.1)
 
 # fit the event series with HawkesN
 .cl <- makeCluster(spec = min(nsim, detectCores()), type = 'FORK')
 results <- parSapply(cl = .cl, X = 1:nsim, FUN = function(i) {
   history.S <- as.data.frame(simhistory[,i])
-  fitted.model <- fitSeries(history = history.S, params.fit.start)
+  fitted.model <- fitSeries(history = history.S, params.fit.start, N)
 })
 stopCluster(.cl)
 res <- as.data.frame(results['par',])
@@ -85,20 +102,20 @@ names(res) <- 1:nsim
 res <- data.frame(t(res))
 
 # these are the theoretical parameters
-params.H <- c(K = 5, c = 0.001, theta = 0.2, N = 1300)
+params.H <- c(K = 5, c = 0.001, theta = 0.2)
 
 prnt <- rbind(params.H, 
               apply(X = res, MARGIN = 2, FUN = median, na.rm = T),
               apply(X = res, MARGIN = 2, FUN = sd, na.rm = T))
 rownames(prnt) <- c('theoretical', 'median', 'sd')
-print(prnt[, c('K', 'theta', 'c', 'N')], digits = 2)
+print(prnt[, c('K', 'theta', 'c')], digits = 2)
 
 
 res$gamma <- res$theta
 res$beta <- res$K * res$theta
-prnt <- rbind(params.S[c('N', 'gamma', 'beta')], 
-              apply(X = res[, c('N', 'gamma', 'beta')], MARGIN = 2, FUN = mean, na.rm = T),
-              apply(X = res[, c('N', 'gamma', 'beta')], MARGIN = 2, FUN = sd, na.rm = T))
+prnt <- rbind(params.S[c('gamma', 'beta')], 
+              apply(X = res[, c('gamma', 'beta')], MARGIN = 2, FUN = mean, na.rm = T),
+              apply(X = res[, c('gamma', 'beta')], MARGIN = 2, FUN = sd, na.rm = T))
 rownames(prnt) <- c('theoretical', 'median', 'sd')
 print(prnt, digits = 2)
 
@@ -139,3 +156,34 @@ legend('bottomleft',
                   sprintf('Deterministic size (%.2f)', size.est.at.zero$theo.mean), 
                   sprintf('Observed final size (%d)', nrow(history)) ), 
        lty = c(1, 1, 3, 2, 1), lwd = c(3, 3, 1, 1, 1), col = c('black', 'blue', 'gray40', 'darkmagenta', 'red'), bty = 'n')
+
+
+
+
+
+
+
+## 6: Plotting Log Likelihood
+
+gamma.vals = seq(0.05, 1, by=0.01)
+beta.vals = seq(0.2, 5, by=0.05)
+K.vals = seq(0.5, 10, by=0.1)
+theta.vals = seq(0.01, 1, by=0.01)
+
+N=getN()
+
+plot.ll(model="SIR", param="gamma", values=gamma.vals, data=as.data.frame(simdat[, 1]), N=N)
+plot.ll(model="SIR", param="beta", values=beta.vals, data=as.data.frame(simdat[, 1]), N=N)
+plot.ll(model="HawkesN", param="K", values=K.vals, data=as.data.frame(simhistory[,1]), N=N)
+plot.ll(model="HawkesN", param="theta", values=theta.vals, data=as.data.frame(simhistory[,1]), N=N)
+
+
+gamma.vals.contour = seq(1/100, 1, by=1/100)
+beta.vals.contour = seq(5/100, 5, by=5/100)
+K.vals.contour = seq(10/100, 10, by=10/100)
+theta.vals.contour = seq(1/100, 1, by=1/100)
+
+contour.plot.ll(model="SIR", param.x="gamma", param.y="beta", 
+                values.x=gamma.vals.contour, values.y=beta.vals.contour, data=as.data.frame(simdat[, 1]), N=N)
+contour.plot.ll(model="HawkesN", param.x="K", param.y="theta", 
+                values.x=K.vals.contour, values.y=theta.vals.contour, data=as.data.frame(simhistory[, 1]), N=N)
