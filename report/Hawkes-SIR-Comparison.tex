@@ -409,7 +409,7 @@ $$
 
 We aim to write $S_t$ and $I_t$
 
-\section{Code}
+\section{Implementation}
 
 A total of 20 simulation SIR and HawkesN models are adapted from code provided by \citep{Rizoiu2018}. The code produces synthetic data suitable for the models of interest. The SIR data is represented with a set of unique timepoints. Each timepoint $t$ is associated with a number representing each compartment, $S_t$, $I_t$, $R_t$, and $C_t$, where $C_t = I_t + R_t$ is infection process. 
  
@@ -418,8 +418,9 @@ The HawkesN data is transformed using the SIR data to be represented by the time
 We aim to estimate $\beta$ and $\gamma$ in the SIR model, as well as $K$ and $\theta$ in the HawkesN. We plot the likelihood for each parameter. 
 
 
+\section{Results}
 
-
+Figures \ref{fig:SIR-ll} and \ref{fig:HawkesN-ll} reflect the negative log-likelihood of the parameters associated with the SIR model and HawkesN model respectively. Figure \ref{fig:contour} shows a contour plot for each model between each pairs of parameters. 
 
 \begin{figure}
 \centering
@@ -434,7 +435,7 @@ We aim to estimate $\beta$ and $\gamma$ in the SIR model, as well as $K$ and $\t
   \caption{$\gamma$}
 \end{subfigure}
 \caption{Negative log-likelihood plot of parameters for HawkesN model. }
-\label{fig:HawkesN-ll}
+\label{fig:SIR-ll}
 \end{figure}
 
 
