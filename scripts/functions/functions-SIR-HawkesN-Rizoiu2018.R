@@ -199,9 +199,10 @@ fitSeries <- function(history, params_init, N) {
     print(paste("[fitSeries] Error in optim:  ", err))
     model <- list(par = c(K = NA, c = NA, theta = NA), value = NA, iter = 0, convergence = 0, message = 'Error')
   })
-  if (is.na(model) || is.na(model$value)) {
-    model <- list(par = c(K = NA, c = NA, theta = NA), value = NA, iter = 0, convergence = 0, message = 'Error')
-  }
+  
+  # if (sum(is.na(model) | is.na(model$value)) > 0) {
+  #   model <- list(par = c(K = NA, c = NA, theta = NA), value = NA, iter = 0, convergence = 0, message = 'Error')
+  # }
 
   return(model)
 }

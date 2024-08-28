@@ -77,6 +77,7 @@ print(prnt[, c('I.0', 'gamma', 'beta')], digits = 2)
 
 
 
+ 
 ## 4: Fit HawkesN on simulated cascades
 ## pull out the infective events for HawkesN model
 
@@ -88,7 +89,7 @@ simhistory <- sapply(X = 1:nsim, FUN = function(i) {
 # model HawkesN on the simulated data following the same steps as SIR
 
 # start point 
-params.fit.start <- c(K = 1, c = 0.1, theta = 0.1)
+params.fit.start <- c(K = 0.1, c = 0.1, theta = 0.1)
 
 # fit the event series with HawkesN
 .cl <- makeCluster(spec = min(nsim, detectCores()), type = 'FORK')
@@ -97,13 +98,26 @@ results <- parSapply(cl = .cl, X = 1:nsim, FUN = function(i) {
   fitted.model <- fitSeries(history = history.S, params.fit.start, N)
 })
 stopCluster(.cl)
-res <- as.data.frame(results['par',])
-names(res) <- 1:nsim
-res <- data.frame(t(res))
 
+
+#res <- as.data.frame(results['par',])
+res <- as.data.frame(matrix(nrow = length(results), ncol = length(results[[1]]$par)))
+
+
+## TODO: I think there's a more efficient way to do this
+for(i in 1:length(results)) {
+  if(sum(is.na(results[[i]])) == 0) {
+    res[i,] <- results[[i]]$par
+  }
+}
+
+#names(res) <- 1:nsim
+names(res) <- names(results[[1]]$par)
+#res <- data.frame(t(res))
+ 
 # these are the theoretical parameters
 params.H <- c(K = 5, c = 0.001, theta = 0.2)
-
+ 
 prnt <- rbind(params.H, 
               apply(X = res, MARGIN = 2, FUN = median, na.rm = T),
               apply(X = res, MARGIN = 2, FUN = sd, na.rm = T))
