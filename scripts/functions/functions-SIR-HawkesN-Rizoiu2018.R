@@ -103,18 +103,38 @@ SIR2HAWKES.stochastic.event.series <- function(state) {
 
 
 # fit SIR using loglikelhood maximization
-fit.stochastic.sir <- function(mysim, params.start, N) {
+fit.stochastic.sir <- function(mysim, params.start, N, iterations = 5000) {
   # if (params.start["N"] <  max(mysim[, -1])) {
   #   params.start["N"] <-  max(mysim[, -1])
   # }
   
   params.start["I.0"] <- mysim$I[1]
-  res <- lbfgs(x0 = unlist(params.start),                            
-               fn = stochastic.sir.complete.neg.log.likelihood,          
-               lower =  c(I.0 = mysim$I[1], gamma = 0, beta = 0),
-               upper = c(I.0 = mysim$I[1], gamma = Inf, beta = Inf),
+  # res <- lbfgs(x0 = unlist(params.start),                            
+  #              fn = stochastic.sir.complete.neg.log.likelihood,          
+  #              lower =  c(I.0 = mysim$I[1], gamma = 0, beta = 0),
+  #              upper = c(I.0 = mysim$I[1], gamma = Inf, beta = Inf),
+  #              state = mysim,
+  #              N = N)
+  
+  
+  
+  ## Error when useing L-BFGS-B:
+  ## Error in optim(par = unlist(params.start), fn = stochastic.sir.complete.neg.log.likelihood, : non-finite finite-difference value [1]
+  
+  res <- optim(par = unlist(params.start),
+               fn = stochastic.sir.complete.neg.log.likelihood,
+              # method = "L-BFGS-B",
+               method = "Nelder-Mead",
+               hessian = FALSE,
+              # lower = c(I.0 = mysim$I[1], gamma = 0, beta = 0),
+              # upper = c(I.0 = mysim$I[1], gamma = Inf, beta = Inf),
                state = mysim,
+               control = list(maxit = iterations, factr = "1e-8"),
+                #list(trace = 3,
+              #                maxit = 1000,
+              #               ndeps = c(1e-4, 1e-4, 1e-4)),
                N = N)
+  
   names(res$par) <- names(params.start)
   
   return(res)
@@ -125,7 +145,7 @@ fit.stochastic.sir <- function(mysim, params.start, N) {
 #' "time", "I", "S", "C", "R" headers) and it contains all events in the
 #' process: new infection, new recovery and (optionally) birth and death. Such a
 #' matrix can be obtained using the "generate.stochastic.sir" function.
-stochastic.sir.complete.neg.log.likelihood <- function(params = c(I.0 = 300, gamma = 0.2, beta = 1), state, N) {
+stochastic.sir.complete.neg.log.likelihood <- function(params, state, N) {
   state <- as.data.frame(state)
   names(params) <- c("I.0", "gamma", "beta")
   params <- unlist(params)
@@ -247,11 +267,17 @@ find.optimal.parameters <- function(history, init_params, # = c(K = 0.1, c = 0.1
                fn = neg.log.likelihood,
                gr = closedGradient,
                method = "L-BFGS-B",
+              # method = "Nelder-Mead",
+              # hessian = FALSE,
                lower = lowerBound,
                upper = upperBound,
                control = list(maxit = iterations, factr = "1e-8"),
-               history = history)
-              # N = N) --> TODO: how do I inlcude N param in optim if not optimizing?
+               history = history,  
+               N = N) 
+  
+  
+  
+  
   
   print(res)
   

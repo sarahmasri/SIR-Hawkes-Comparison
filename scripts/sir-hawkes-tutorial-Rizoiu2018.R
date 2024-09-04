@@ -7,13 +7,13 @@ library(parallel)
 source('scripts/functions/functions-SIR-HawkesN-Rizoiu2018.R')
 source('scripts/functions/functions-size-distribution-Rizoiu2018.R')
 
-
+N <- getN()
 
 
 
 ## 2:  Stochastic R simulation
 ## simulate 20 stochastic SIR relizations
-params.S <- c(N = 1300, I.0 = 300, gamma = 0.2, beta = 1)
+params.S <- c(N = N , I.0 = 300, gamma = 0.2, beta = 1)
 nsim <- 20
 simdat <- replicate(
   n = nsim,
@@ -25,7 +25,7 @@ as.data.frame(simdat[,1])[1:20,]
 
 
 
-N <- getN()
+
 
 
 
@@ -52,7 +52,7 @@ res <- as.data.frame(t(res))
 res$ll <- unlist(results[2,])
 complete_res <- res
 
-# let's see how well parameters were retreived
+# let's see how well parameters were retrieved
 prnt <- rbind(params.S[c('I.0', 'gamma', 'beta')], 
               apply(X = complete_res[, c('I.0', 'gamma', 'beta')], MARGIN = 2, FUN = median),
               apply(X = complete_res[, c('I.0', 'gamma', 'beta')], MARGIN = 2, FUN = sd))
@@ -201,3 +201,4 @@ contour.plot.ll(model="SIR", param.x="gamma", param.y="beta",
                 values.x=gamma.vals.contour, values.y=beta.vals.contour, data=as.data.frame(simdat[, 1]), N=N)
 contour.plot.ll(model="HawkesN", param.x="K", param.y="theta", 
                 values.x=K.vals.contour, values.y=theta.vals.contour, data=as.data.frame(simhistory[, 1]), N=N)
+
