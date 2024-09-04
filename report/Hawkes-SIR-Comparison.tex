@@ -19,6 +19,12 @@
 \usepackage{breakurl}
 \usepackage{chngcntr}
 
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx,ragged2e,booktabs,caption}
+\newcolumntype{C}[1]{>{\Centering}m{#1}}
+\renewcommand\tabularxcolumn[1]{C{#1}}
+
 \usepackage{bbm}
 
 
@@ -147,7 +153,7 @@ Compartmental models are a common approach in epidemiology for understanding and
 
 \begin{definition}[SIR Model]
 The SIR model describes a class compartmental model with SIR population groups \cite{Bertozzi2020}. 
-
+ 
 $$
 \frac{dS}{dt} = - \beta \frac{IS}{N}, \hspace{5mm}
 \frac{dI}{dt} = \beta \frac{IS}{N} - \gamma I, \hspace{5mm}
@@ -411,16 +417,29 @@ We aim to write $S_t$ and $I_t$
 
 \section{Implementation}
 
-A total of 20 simulation SIR and HawkesN models are adapted from code provided by \citep{Rizoiu2018}. The code produces synthetic data suitable for the models of interest. The SIR data is represented with a set of unique timepoints. Each timepoint $t$ is associated with a number representing each compartment, $S_t$, $I_t$, $R_t$, and $C_t$, where $C_t = I_t + R_t$ is infection process. 
+A Monte Carlo simulation with 20 repetitions are run, each with population size $N = 1300$, and theoretical parameters $I = 300$, $\gamma = 0.2$, and $\beta = 1$. These are adapted from code provided by \citep{Rizoiu2018}.  It is important to note that the code is modified with the assumption that the total population size $N$ is known. Hence, any estimation of $N$ is omitted from the adapted code. The code produces synthetic data suitable for the models of interest. The SIR data is represented with a set of unique timepoints. Each timepoint $t$ is associated with a number representing each compartment, $S_t$, $I_t$, $R_t$, and $C_t$, where $C_t = I_t + R_t$ is infection process. 
  
-The HawkesN data is transformed using the SIR data to be represented by the timepoints associated with each infection event. It is important to note that the code is adapted with the assumption that the total population size $N$ is known. Hence, any estimation of $N$ is omitted from the adapted code. 
+The HawkesN data is transformed using the SIR data to be represented by the timepoints associated with each infection event. Moreover, by Theorem \ref{Thrm1}, the estimated parameters from the HawkesN model can be transformed to analogous SIR results using the following:
+$$
+\gamma = \theta, \hspace{10mm}
+\beta = \kappa \theta
+$$
 
-We aim to estimate $\beta$ and $\gamma$ in the SIR model, as well as $K$ and $\theta$ in the HawkesN. We plot the likelihood for each parameter. 
+We aim to estimate $\beta$ and $\gamma$ in the SIR model, as well as $\kappa$ and $\theta$ in the HawkesN. We plot the likelihood for each parameter. 
+
+
 
 
 \section{Results}
 
 Figures \ref{fig:SIR-ll} and \ref{fig:HawkesN-ll} reflect the negative log-likelihood of the parameters associated with the SIR model and HawkesN model respectively. Figure \ref{fig:contour} shows a contour plot for each model between each pairs of parameters. 
+
+
+
+
+
+
+
 
 \begin{figure}
 \centering
@@ -478,6 +497,30 @@ Figures \ref{fig:SIR-ll} and \ref{fig:HawkesN-ll} reflect the negative log-likel
 
 
 
+\begin{minipage}{\linewidth}
+\centering
+\captionof{table}{Table Title} \label{tab:title} 
+\begin{tabular}{ C{1.25in} C{.85in} *4{C{.75in}}}\toprule[1.5pt]
+\bf Variable Name & \bf Regression 1 & \bf Mean & \bf Std. Dev & \bf Min & \bf Max\\\midrule
+text        &  text     & text      &  text     &  text     &text\\
+\bottomrule[1.25pt]
+\end {tabular}\par
+\bigskip
+Should be a caption
+\end{minipage}
+
+
+\begin{center}
+\begin{tabular}{ |p{3cm}||p{1cm}|p{2.5cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|  }
+\hline
+ & $I$ & $\gamma$ & $\beta$ & $K$ & $\theta$ & $c$ \\
+  \hline
+theoretical  & 300 & $0.2$ & 1 & 5 & 0.2 & 0.001 \\
+median & 307 & $-4.3 \times 10^{-10}$ & 1.9 & 4.89 &  0.204 & 0.1 \\
+sd &  11 &  $0.2$ &  1.1 & 0.52  & 0.026  & 0.000\\
+ \hline
+\end{tabular}
+\end{center}
 
 
 
