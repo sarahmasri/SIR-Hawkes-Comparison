@@ -1,0 +1,107 @@
+\begin{thebibliography}{15}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Garetto et~al.(2021)Garetto, Leonardi, and Torrisi]{Garetto2021}
+Michele Garetto, Emilio Leonardi, and Giovanni~Luca Torrisi.
+\newblock A time-modulated hawkes process to model the spread of {COVID-19} and
+  the impact of countermeasures.
+\newblock \emph{Annu. Rev. Control}, 51:\penalty0 551--563, March 2021.
+
+\bibitem[Rizoiu et~al.(2018)Rizoiu, Mishra, Kong, Carman, and Xie]{Rizoiu2018}
+Marian-Andrei Rizoiu, Swapnil Mishra, Quyu Kong, Mark Carman, and Lexing Xie.
+\newblock Sir-hawkes: Linking epidemic models and hawkes processes to model
+  diffusions in finite populations.
+\newblock In \emph{Proceedings of the 2018 World Wide Web Conference}, WWW '18,
+  page 419–428, Republic and Canton of Geneva, CHE, 2018. International World
+  Wide Web Conferences Steering Committee.
+\newblock ISBN 9781450356398.
+\newblock \doi{10.1145/3178876.3186108}.
+\newblock URL \url{https://doi.org/10.1145/3178876.3186108}.
+
+\bibitem[Dahlqvist(2022)]{Dahlqvist2022}
+Isak Dahlqvist.
+\newblock The self-exciting hawkes processand dynamic contagion.
+\newblock Master's thesis, Uppsala University, 2022.
+
+\bibitem[Reinhart(2018)]{Reinhart2018}
+Alex Reinhart.
+\newblock A review of self-exciting spatio-temporal point processes and their
+  applications.
+\newblock \emph{Stat. Sci.}, 33\penalty0 (3), August 2018.
+
+\bibitem[Bertozzi et~al.(2020)Bertozzi, Franco, Mohler, Short, and
+  Sledge]{Bertozzi2020}
+Andrea~L Bertozzi, Elisa Franco, George Mohler, Martin~B Short, and Daniel
+  Sledge.
+\newblock The challenges of modeling and forecasting the spread of {COVID-19}.
+\newblock \emph{Proc. Natl. Acad. Sci. U. S. A.}, 117\penalty0 (29):\penalty0
+  16732--16738, July 2020.
+
+\bibitem[Kresin et~al.(2022)Kresin, Schoenberg, and Mohler]{Kresin2022}
+Conor Kresin, Frederic~Paik Schoenberg, and George Mohler.
+\newblock Comparison of hawkes and seir models for the spread of covid-19.
+\newblock \emph{Adv. Appl. Stat.}, 74:\penalty0 83--106, March 2022.
+
+\bibitem[Lamprinakou et~al.(2023)Lamprinakou, Gandy, and
+  McCoy]{Lamprinakou2023}
+Stamatina Lamprinakou, Axel Gandy, and Emma McCoy.
+\newblock Using a latent hawkes process for epidemiological modelling.
+\newblock \emph{PLoS One}, 18\penalty0 (3):\penalty0 e0281370, March 2023.
+
+\bibitem[Brauer et~al.(2019)Brauer, Castillo-Chavez, and Feng]{Brauer2019}
+Fred Brauer, Carlos Castillo-Chavez, and Zhilan Feng.
+\newblock \emph{Mathematical {Models} in {Epidemiology}}, volume~69 of
+  \emph{Texts in {Applied} {Mathematics}}.
+\newblock Springer New York, New York, NY, 2019.
+\newblock ISBN 978-1-4939-9826-5 978-1-4939-9828-9.
+\newblock \doi{10.1007/978-1-4939-9828-9}.
+\newblock URL \url{https://link.springer.com/10.1007/978-1-4939-9828-9}.
+
+\bibitem[Ko et~al.(2024)Ko, Suchard, and Holbrook]{Ko2024}
+Seyoon Ko, Marc~A. Suchard, and Andrew~J. Holbrook.
+\newblock Scaling hawkes processes to one million covid-19 cases, 2024.
+
+\bibitem[Calderon et~al.(2022)Calderon, Ram, and Rizoiu]{Calderon2022}
+Pio Calderon, Rohit Ram, and Marian-Andrei Rizoiu.
+\newblock Opinion market model: Stemming far-right opinion spread using
+  positive interventions.
+\newblock \emph{ArXiv}, abs/2208.06620, 2022.
+\newblock URL \url{https://api.semanticscholar.org/CorpusID:251564891}.
+
+\bibitem[Lamprinakou and Gandy(2022)]{Lamprinakou2022}
+Stamatina Lamprinakou and Axel Gandy.
+\newblock Age-stratified epidemic model using a latent marked hawkes process,
+  2022.
+
+\bibitem[Cakmakli and Simsek(2020)]{Cakmakli2020}
+Cem Cakmakli and Yasin Simsek.
+\newblock Bridging the covid-19 data and the epidemiological model using time
+  varying parameter sird model, 2020.
+
+\bibitem[Chávez~Casillas(2024)]{Casillas2024}
+Jonathan~A. Chávez~Casillas.
+\newblock A stochastic model for the early stages of highly contagious
+  epidemics by using a state-dependent point process.
+\newblock \emph{Communications in Nonlinear Science and Numerical Simulation},
+  136:\penalty0 108100, September 2024.
+\newblock ISSN 1007-5704.
+\newblock \doi{10.1016/j.cnsns.2024.108100}.
+\newblock URL \url{http://dx.doi.org/10.1016/j.cnsns.2024.108100}.
+
+\bibitem[Mohler(2023)]{Mohler2023}
+George Mohler.
+\newblock Lecture notes for computational modeling of contagion and epidemics:
+  A companion to "the rules of contagion" by a. kucharski, 09 2023.
+
+\bibitem[Schoenberg(2023)]{Schoenberg2023}
+Frederic Schoenberg.
+\newblock Some statistical problems involved in forecasting and estimating the
+  spread of {SARS-CoV-2} using hawkes point processes and {SEIR} models.
+\newblock \emph{Environ. Ecol. Stat.}, 30\penalty0 (4):\penalty0 851--862,
+  December 2023.
+
+\end{thebibliography}
