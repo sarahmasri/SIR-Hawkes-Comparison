@@ -1109,6 +1109,8 @@ INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/jknappen/ec/ecti0800.tfm
+INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/jknappen/ec/ecti0600.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/bbm-macros/ubbm.fd

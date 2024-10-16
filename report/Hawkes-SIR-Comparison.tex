@@ -67,7 +67,7 @@
 
 
 \title{Comparison of Hakwes Model and Compartmental Models for COVID-19}
-\author{Sarah Masri \\ 97415681}
+\author{Sarah Masri}
 \date{\today}
 
 \begin{document}
@@ -126,12 +126,16 @@ A self-exciting process is a generalized Poisson process whose intensity is incr
 \begin{definition}[Hawkes Process]
 The Hawkes process is a self-exciting process such that for each arrival time $t_j < t$, new events are generated at rate $\phi(t - t_j)$. The intensity (event rate) of the Hawkes process is characterized by a stochastic function depending on the horizon (previous arrival times)
 \[
-\lambda(t) = \mu + \sum_{t_j < t} \phi(t - t_j)
+\lambda(t) = \mu + K \sum_{t_j < t}  \phi(t - t_j)
 \]
 
-where $\mu$ is the background rate and $\phi(\cdot)$ is referred to as the (triggering) kernel~\cite{Rizoiu2018, Reinhart2018}.
+where $\mu$ is the background rate, $K$ is the producivity constant, and $\phi(\cdot)$ is referred to as the triggering kernel~\cite{Rizoiu2018, Reinhart2018}.
 \end{definition}
 \vspace{3mm}
+
+It is beneficial to acknowledge that the productivity constant $K$ denotes the expected number of events triggered by another. Conversly, the triggering kernel reflects how far a landing event is from the event that triggered it. 
+%relates to reproduction number TODO add a seciton on this?
+
 New events either enter the system through the background rate, or are generated through previous events corresponding with the triggering kernel $\phi(\cdot)$. 
 
 
@@ -141,11 +145,17 @@ Consider the application of infectious disease. The Hawkes point process is a po
 \begin{definition}[HawkesN Process] 
 The HawkesN model is a generalization of the Hawkes process with the assumption of a finite population. This process has intensity
 \[
-\lambda^H(t) = \Big ( 1 - \frac{N_t}{N} \Big ) \Big [ \mu + \sum_{t_j < t} \phi (t - t_j) \Big ]
+\lambda^H(t) = \Big ( 1 - \frac{C_t}{N} \Big ) \Big [ \mu + K \sum_{t_j < t} \phi (t - t_j) \Big ]
 \]  
-where $\phi( t - t_j)$ is the triggering kernel, $N_t$ is the counting process $ 1 - \frac{N_t}{N}$ scales the event rate at time $t$ with the proportion of events that can occur after time $t$~\cite{Rizoiu2018}. 
+where $K$ is the productivity constnat, $\phi( t - t_j)$ is the triggering kernel, $C_t$ is the counting process $ 1 - \frac{C_t}{N}$ scales the event rate at time $t$ with the proportion of events that can occur after time $t$~\cite{Rizoiu2018}. 
+
+%Some extentions of the Hawkes process includes a producivity constant $K$...
   
+%The HawkesN process does not include the porductivity constant K. Reinharts paper also doesn't include it?
+% We could also include the productivity constant: rate of infection stimulated by each event
 \end{definition}
+
+
 
 
 The Hawkes process is a special case of the HawkesN as $N \to \infty$. 
@@ -188,6 +198,7 @@ where $\beta$ is the transmission rate constant, $\gamma$ is the recovery rate c
 
 
 
+
 \vspace{3mm}
 
 \begin{definition}[Stochastic SIR]\label{stochastic-SIR}
@@ -202,7 +213,7 @@ S(t) = \mathbb{E}_{\mathcal{H}_t} [ R_t ]
 \]
 
 
-Define the time to recovery as $\tau_j = t_j^R - t_j^I$. These times are distributed exponentially with parameter $\gamma$ and infections lasting on average $1/\gamma$ units of time. 
+Define the time to recovery as $\tau_j^R = t_j^R - t_j^I$. These times are distributed exponentially with parameter $\gamma$ and infections lasting on average $1/\gamma$ units of time. 
 
 Let $C_t$ be the counting process associated with infections, and $R_t$ be the counting process associated with recovers. Then we have that $C_t = N - S_t$. 
 
@@ -357,15 +368,16 @@ It is claimed that most compartmental models can be represented using a renewal 
 \cite{Rizoiu2018} further discusses connections between the two frameworks. They claim that the rate of events in an extended Hawkes model is identical to the rate of new infection in the SIR model. 
 \\
 
-\begin{theorem}\label{Thrm1}
-Suppose the new infections in a stochastic SIR process of parameters $\{\beta, \gamma, N\}$ follow a point process of intensity $\lambda^I(t)$. Suppose also that the events in a HawkesN process with parameters $\{\mu, \kappa, \theta, N\}$ have intensity $\lambda^H (t)$. 
-\\
-\\
-Let $\tau$ = $\{\tau_1, \tau_2, \ldots \}$ be the set of the times to recovery of the infected individuals in the SIR process. the expectation of $\lambda^I (t)$ over $\tau$ is equal $\lambda^H (t)$:
+\begin{theorem}\label{thrm:SIR}
+Suppose the new infections in a stochastic SIR process of parameters $\{\beta, \gamma, N\}$ follow a point process of intensity $\lambda^I(t)$. Suppose also that the events in a HawkesN process with parameters $\{\mu, K, \theta, N\}$ have intensity $\lambda^H (t)$ with an exponential kernel such that,
 \[
-\mathbb{E}_\tau [ \lambda^I (t)] = \lambda^H (t)\]
+\phi(\tau) =  \theta e^{-\theta \tau}, \hspace{5mm} \text{and} 
+\]
+Let $\tau^R$ = $\{\tau_1^R, \tau_2^R, \ldots \}$ be the set of the times to recovery of the infected individuals in the SIR process. the expectation of $\lambda^I (t)$ over $\tau^R$ is equal $\lambda^H (t)$:
+\[
+\mathbb{E}_{\tau^R} [ \lambda^I (t)] = \lambda^H (t)\]
 
-when $\mu = 0$, $\beta = \kappa \theta$, and $\gamma = \theta$~\cite{Rizoiu2018}. 
+when $\mu = 0$, $\beta = K \theta$, and $\gamma = \theta$~\cite{Rizoiu2018}. c
 \end{theorem}
 
 
@@ -373,22 +385,22 @@ when $\mu = 0$, $\beta = \kappa \theta$, and $\gamma = \theta$~\cite{Rizoiu2018}
 \begin{proof} Recall that $C_t$ denotes the infection process, and $R_t$ denotes the recovery process. First, we write these using the sum of indicators functions. We find that
 \begin{align*}
 S_t &= N - C_t = N - \sum_{j\geq 1} \mathbbm{1} (t_j^I < t) \\
-I_t &= C_t - R_t = \sum_{j\geq 1} \mathbbm{1} (t_j^I < t, t_j^R > t) = \sum_{t_j^I < t} \mathbbm{1} (t_j^I + \tau_j > t). 
+I_t &= C_t - R_t = \sum_{j\geq 1} \mathbbm{1} (t_j^I < t, t_j^R > t) = \sum_{t_j^I < t} \mathbbm{1} (t_j^I + {\tau^R}_j > t). 
 \end{align*} 
  
 Consider the point process consisting of only the infection events $\{t_j^I\}$. The event rate in this process is obtained by marginalizing out times of recovery. 
 \begin{align*}
 \mathbb{E}_\omega [ \lambda^I (t)] 
-&= \mathbb{E}_\tau \Big [\beta \frac{S_t}{N} \sum_{t_j^I < t} \mathbbm{1} (t_j^I + \tau_j > t) \Big ]\\ 
-&= \sum_{t_j^I < t} \mathbb{E}_\tau \Big [\beta \frac{S_t}{N}  \mathbbm{1} (t_j^I + \tau_j > t) \Big ]\\
-&= \sum_{t_j^I < t}\int_0^\infty \beta \frac{S_t}{N}  \mathbbm{1} (t_j^I + \zeta > t) r_\tau(\zeta) d\zeta \\
-&= \sum_{t_j^I < t} \beta \frac{S_t}{N} \int_{t - t_j^I}^\infty r_\tau(\zeta) d\zeta \\
-&= \sum_{t_j^I < t} \beta \frac{S_t}{N} \int_{t - t_j^I}^\infty r_\tau(\zeta) d\zeta
+&= \mathbb{E}_{\tau^R} \Big [\beta \frac{S_t}{N} \sum_{t_j^I < t} \mathbbm{1} (t_j^I + {\tau^R}_j > t) \Big ]\\ 
+&= \sum_{t_j^I < t} \mathbb{E}_{\tau^R} \Big [\beta \frac{S_t}{N}  \mathbbm{1} (t_j^I + {\tau^R}_j > t) \Big ]\\
+&= \sum_{t_j^I < t}\int_0^\infty \beta \frac{S_t}{N}  \mathbbm{1} (t_j^I + \zeta > t) r_{\tau^R}(\zeta) d\zeta \\
+&= \sum_{t_j^I < t} \beta \frac{S_t}{N} \int_{t - t_j^I}^\infty r_{\tau^R}(\zeta) d\zeta \\
+&= \sum_{t_j^I < t} \beta \frac{S_t}{N} \int_{t - t_j^I}^\infty r_{\tau^R}(\zeta) d\zeta
 \end{align*}
  
-where $r_\tau(\zeta)$ is the exponential probability distribution function for the time of recovery. Since $S_t = N - C_t$, we get
+where $r_{\tau^R}(\zeta)$ is the exponential probability distribution function for the time of recovery. Since $S_t = N - C_t$, we get
 \[
-\mathbb{E}_\tau [ \lambda^I (t)] = \Big (1 - \frac{C_t}{N} \Big ) \sum_{t_j^I < t}  \beta e^{- \gamma (t - t_j^I)}
+\mathbb{E}_{\tau^R} [ \lambda^I (t)] = \Big (1 - \frac{C_t}{N} \Big ) \sum_{t_j^I < t}  \beta e^{- \gamma (t - t_j^I)}
 \] 
  
  
@@ -408,7 +420,7 @@ where $r_\tau(\zeta)$ is the exponential probability distribution function for t
 
 \subsubsection{Exploration of Triggering Kernel}
 
-\cite{Rizoiu2018} throws equivalence in expectation between the intensities of the stochastic SIR and HawkesN models. We want to explore if any other choices in the triggering kernel $\phi(\cdot )$ of the HawkesN process yields more connection between the Hawkes model and other stochastic representations of other compartmental models. 
+\cite{Rizoiu2018} shows equivalence in expectation between the intensities of the stochastic SIR and HawkesN models. We want to explore if any other choices in the triggering kernel $\phi(\cdot )$ of the HawkesN process yields more connection between the Hawkes model and other stochastic representations of other compartmental models. 
 
 First recall the SEIR model, in definition~\ref{SEIR}. Consider the stochastic representation of this  model with random variables $S_t$, $E_t$, $I_t$, and $R_t$ associated with their respective compartments. Suppose the new infections in this stochastic SEIR process of intensity $\lambda^I(t)$, as in definition~\ref{stochastic-SIR}.
 
@@ -417,51 +429,125 @@ Recall the $C_t$ is the counting process associated with the infection process a
 By definition of the SEIR model, we naturally have that $N = S_t + E_t + I_t + R_t$. Encorporating the cumulative case count $C_t$, we also get
 
 \[
-S_t = N - C_t - E_t, \hspace* {5mm}
-E_t = N - S_t - C_t, \hspace*{5mm}
-I = C_t - R_t
+S_t = N - C_t, \hspace* {5mm}
+I = C_t - R_t  - E_t
 \]
 
 Equivalently to the above, we have that
 
 \[
-C_t = N - S_t - E_t
+C_t = N - S_t
 \]
 
-We define the intensity of a stochastic compartmental model, in this case the SEIR model, as the rate of change of individuals moving into the infected compartment. Equivalently, this is the rate of change of $C_t$. That is, 
+% We define the intensity of a stochastic compartmental model, in this case the SEIR model, as the rate of change of individuals moving into the infected compartment. Equivalently, this is the rate of change of $C_t$. That is, 
 
-\begin{align*}
-  \lambda^I(t) &= \frac{dC_t}{dt} \\
-  &= \frac{d (N - S_t - E_t)}{dt} \\
-  &= - \frac{d(S_t + E_t)}{dt} \\
-  &= - \Big ( \frac{dS_t}{dt} + \frac{dE_t}{dt} \Big ) \\
-  &= aE
-\end{align*}
+% \begin{align*}
+%   \lambda^I(t) &= \frac{dC_t}{dt} \\
+%   &= \frac{d (N - S_t - E_t)}{dt} \\
+%   &= - \frac{d(S_t + E_t)}{dt} \\
+%   &= - \Big ( \frac{dS_t}{dt} + \frac{dE_t}{dt} \Big ) \\
+%   &= aE
+% \end{align*}
 
 %maybe definition of incubation period is not accurate?
 %cite how we know incubation times are 
-Consider the incubation period $(t_j^E, t_j^I)$, the time that it takes for an individual to become infected after being exposed to a disease. Define the \textit{time of incubation}, $\omega_j = t_j^I - t_j^E$, to be the time in which individual $j$ is exposed to the disease before becoming infected. We assume that the incubation times are exponentially distributed with parameter $a$, and mean incubation period $1/a$. Let $r_\omega(\zeta)$ be the probability distribution function for $\omega$. 
+
+
+%TODO work on notation and flow here
+Consider the time period $(t_j^E, t_j^I)$, the time that it takes for an individual to become infected after being exposed to a disease. Define the \textit{time to infection from exposed}, $\tau_j^{I} = t_j^I - t_j^E$, to be the time in which individual $j$ is exposed to the disease before becoming infected. We assume that the these times are exponentially distributed with parameter $a$, and mean wait time $1/a$. Let $r_\tau^{I}(\zeta)$ be the probability distribution function for $\tau^I$. 
+%theta_I = a
+
+
 % this needs more explanation i think
 % I think the distirbution of the wait times would only be a convolution if there were intermittend steps/compartments within the E compartment. Since S is not consideed in the incubation times, would it still be a convolution?
 
-\begin{theorem}[TODO]
-  %TODO
+% \begin{theorem}[TODO]
+%   %TODO
 
-  Let $\omega = \{\omega_1, \omega_2, \ldots\}$ be the set of incubation times for each individual in the SEIR model. 
+%   Let $\omega = \{\omega_1, \omega_2, \ldots\}$ be the set of incubation times for each individual in the SEIR model. 
+% \end{theorem}
+
+% \begin{proof}
+  
+
+% \begin{align}
+%   \mathbb{E} [\lambda^I (t)] &= \mathbb{E}_\omega [a E_t] \\
+%   &= \mathbb{E}_\omega [a \sum_{j\geq 1} \mathbbm{1}(t_j^E < t, t_j^I > t)] \\ 
+%   &= \mathbb{E}_\omega [a \sum_{j\geq 1} \mathbbm{1}(t_j^I - \omega_j^{(EI)}  < t)] \\
+%   &= \sum_{j\geq 1} \int_0^{\infty} a \mathbbm{1}(t_j^I - \zeta < t) r_\tau(\zeta) d \zeta \\
+%   &= \sum_{j\geq 1} a \int_{t_j^I - t}^{\infty} r_\omega(\zeta) d\zeta \\
+%  % &= a \sum_{j\geq 1} e^{-\gamma (t_j^I - t)}
+% \end{align}
+
+
+% \end{proof}
+
+
+
+Now, consider the stoachastic representation of the SEIR model. We aim to connect the intensity of this model to the intesity of the HawkesN process. Note the added `exposed' comparment in the SEIR model in comparison to the more simple SIR model. Individuals associated with this compartment are classified as infectious but not \textit{infected}. In other words, these individuals are carrying and potentially spreading the disease, despite not belonging to the infected compartment.
+
+By definition, the relevant intensity associated with the stochastic representation of the SEIR model is the rate at which individuals in the population become infectious– or the rate at which indivuals enter the $E$ compartment. Equivalently, the intensity of the stoachastic SEIR model is precisely the rate of change of the cumulative case counts. Note in the following that it continues to hold that $C_t = N - S_t$. 
+
+\begin{equation}
+  \lambda^{E}(t) = \frac{d C_t}{dt} =  -\frac{dS_t}{dt} = \beta \frac{IS}{N}
+\end{equation}
+
+We additionally aim to write $I_t$ as the sum of indicators. 
+
+\begin{align*}
+  I_t &= C_t - R_t - E_t  \\
+  &= \sum_{j \geq 1} \mathbbm{1} (t_j^I < t, t_j^R > t) \\
+  &=  \sum_{t_j^I < t} \mathbbm{1} (t_j^I + \tau_j^R > t) \\
+  &=  \sum_{t_j^I < t} \mathbbm{1} (t_j^E + \tau_j^I + \tau_j^R > t) 
+\end{align*}
+
+
+
+\begin{theorem}\label{thrm:SEIR}
+  Suppose the new infections in a stoachastic SEIR process of parameters $\{\beta, a, \gamma, N\}$ follow a point process of intensity $\lambda^E(t)$. Suppose also that the vents in a HawkesN process with parameters $\{\mu, K, \theta, N\}$ have intensity $lambda^H(t)$ with an exponential kernal such that,
+  \[
+  \phi(\tau) = \theta e^{-\theta \tau}
+  \]
+
+  Let $\tau_I = \{\tau_1^I, \tau_2^I, \ldots\}$ and $\tau_R = \{\tau_1^R, \tau_2^R, \ldots\}$ be the set of times to infection from exposed and times to recover from infected respectively. The expectation of $\lambda^E(t)$ over the wait times is equal to $\lambda^H(t)$:
+  \[
+\mathbb{E}[\lambda^E(t)] = \lambda^H(t)
+  \]
+  when $\mu=0$, $\beta=\frac{a - \theta}{a} \theta$, and $\gamma = \theta$. 
 \end{theorem}
 
 \begin{proof}
   
+  
 
-\begin{align}
-  \mathbb{E} [\lambda^I (t)] &= \mathbb{E}_\omega [a E_t] \\
-  &= \mathbb{E}_\omega [a \sum_{j\geq 1} \mathbbm{1}] \\
-  &= \mathbb{E}_\omega [a \sum_{j\geq 1} \mathbbm{1}(t_j^E < t)] \\ 
-  &= \mathbb{E}_\omega [a \sum_{j\geq 1} \mathbbm{1}(t_j^I - \omega_j < t)] \\
-  &= \sum_{j\geq 1} \int_0^{\infty} a \mathbbm{1}(t_j^I - \zeta < t) r_\tau(\zeta) d \zeta \\
-  &= \sum_{j\geq 1} a \int_{t_j^I - t}^{\infty} r_\omega(\zeta) d\zeta \\
- % &= a \sum_{j\geq 1} e^{-\gamma (t_j^I - t)}
-\end{align}
+% \begin{align*}
+%   \lambda^{E}(t) &= \mathbb{E}_{\tau^R} \Big [ \beta \frac{S_t}{N} I_t  \Big ] \\
+%   &= \mathbb{E}_{\tau^R} \Big [ \beta \frac{S_t}{N}  \sum_{t_j^I < t} \mathbbm{1} (t_j^I + \tau_j^R > t)  \Big ] \\
+%   &=  \mathbb{E}_{\tau^I} \mathbb{E}_{\tau^R} \Big [ \beta \frac{S_t}{N}  \sum_{t_j^I < t} \mathbbm{1} (t_j^E + \tau_j^I + \tau_j^R > t)  \Big ] \\
+%   &=  \sum_{t_j^I < t} \mathbb{E}_{\tau^I} \mathbb{E}_{\tau^R} \Big [ \beta \frac{S_t}{N} \mathbbm{1} (t_j^E + \tau_j^I + \tau_j^R > t)  \Big ] \\
+%   &=  \sum_{t_j^I < t} \int_0^\infty \int_0^\infty \beta \frac{S_t}{N}  \mathbbm{1} (t_j^E + \zeta^I + \zeta^R > t)\ r_{\tau_R}(\zeta^R) r_{\tau_I}(\zeta^I) d\zeta^R\ d\zeta^I \\
+%   &=  \sum_{t_j^I < t} \beta \frac{S_t}{N} \int_{0}^\infty \int_{t-t_j^E-\zeta^I}^\infty \ r_{\tau_R}(\zeta^R) r_{\tau_I}(\zeta^I) d\zeta^R\ d\zeta^I \\
+%   &=  \sum_{t_j^I < t} \beta \frac{S_t}{N} \int_{0}^\infty  e^{-\theta_R (t - t_j^E - \zeta^I)} r_{\tau_I}(\zeta^I) d\zeta^R\ d\zeta^I \\
+%   &=  \sum_{t_j^I < t} \beta \frac{S_t}{N} \int_{0}^\infty  e^{-\theta_R (t - t_j^E - \zeta^I)} \theta_I e^{-\theta_I \zeta^I} d\zeta^R\ d\zeta^I \\
+%   &=  \sum_{t_j^I < t} \beta \frac{S_t}{N} e^{-\theta_R (t - t_j^E)} \int_{0}^\infty   \theta_I e^{-(\theta_I - \theta_R) \zeta^I} d\zeta^R\ d\zeta^I \\
+%   &=  \sum_{t_j^I < t} \beta \frac{S_t}{N} e^{-\theta_R (t - t_j^E)} \frac{\theta_I}{\theta_I - \theta_R} \\
+%   &=  \Big ( 1 - \frac{C_t}{N} \Big )  \sum_{t_j^I < t} \frac{\theta_I}{\theta_I - \theta_R} \beta e^{-\theta_R (t - t_j^E)}  \\
+% \end{align*}
+
+
+\begin{align*}
+  \lambda^{E}(t) &= \mathbb{E}_{\tau^R} \Big [ \beta \frac{S_t}{N} I_t  \Big ] \\
+  &= \mathbb{E}_{\tau^R} \Big [ \beta \frac{S_t}{N}  \sum_{t_j^I < t} \mathbbm{1} (t_j^I + \tau_j^R > t)  \Big ] \\
+  &=  \mathbb{E}_{\tau^I} \mathbb{E}_{\tau^R} \Big [ \beta \frac{S_t}{N}  \sum_{t_j^I < t} \mathbbm{1} (t_j^E + \tau_j^I + \tau_j^R > t)  \Big ] \\
+  &=  \sum_{t_j^I < t} \mathbb{E}_{\tau^I} \mathbb{E}_{\tau^R} \Big [ \beta \frac{S_t}{N} \mathbbm{1} (t_j^E + \tau_j^I + \tau_j^R > t)  \Big ] \\
+  &=  \sum_{t_j^I < t} \int_0^\infty \int_0^\infty \beta \frac{S_t}{N}  \mathbbm{1} (t_j^E + \zeta^I + \zeta^R > t)\ r_{\tau_R}(\zeta^R) r_{\tau_I}(\zeta^I) d\zeta^R\ d\zeta^I \\
+  &=  \sum_{t_j^I < t} \beta \frac{S_t}{N} \int_{0}^\infty \int_{t-t_j^E-\zeta^I}^\infty \ r_{\tau_R}(\zeta^R) r_{\tau_I}(\zeta^I) d\zeta^R\ d\zeta^I \\
+  &=  \sum_{t_j^I < t} \beta \frac{S_t}{N} \int_{0}^\infty  e^{-\theta (t - t_j^E - \zeta^I)} r_{\tau_I}(\zeta^I) d\zeta^R\ d\zeta^I \\
+  &=  \sum_{t_j^I < t} \beta \frac{S_t}{N} \int_{0}^\infty  e^{-\theta (t - t_j^E - \zeta^I)} a e^{-a \zeta^I} d\zeta^R\ d\zeta^I \\
+  &=  \sum_{t_j^I < t} \beta \frac{S_t}{N} e^{-\theta (t - t_j^E)} \int_{0}^\infty   a e^{-(a - \theta) \zeta^I} d\zeta^R\ d\zeta^I \\
+  &=  \sum_{t_j^I < t} \beta \frac{S_t}{N} e^{-\theta (t - t_j^E)} \frac{a}{a - \theta} \\
+  &=  \Big ( 1 - \frac{C_t}{N} \Big )  \sum_{t_j^I < t} \frac{a}{a - \theta} \beta e^{-\theta (t - t_j^E)}  \\
+\end{align*}
 
 
 \end{proof}
@@ -477,7 +563,7 @@ Consider the incubation period $(t_j^E, t_j^I)$, the time that it takes for an i
 
 A Monte Carlo simulation with 20 repetitions are run, each with population size $N = 1300$, and theoretical parameters $I = 300$, $\gamma = 0.2$, and $\beta = 1$. These are adapted from code provided by \citep{Rizoiu2018}.  It is important to note that the code is modified with the assumption that the total population size $N$ is known. Hence, any estimation of $N$ is omitted from the adapted code. The code produces synthetic data suitable for the models of interest. The SIR data is represented with a set of unique timepoints. Each timepoint $t$ is associated with a number representing each compartment, $S_t$, $I_t$, $R_t$, and $C_t$, where $C_t = I_t + R_t$ is infection process. 
  
-The HawkesN data is transformed using the SIR data to be represented by the timepoints associated with each infection event. Moreover, by Theorem~\ref{Thrm1}, the estimated parameters from the HawkesN model can be transformed to analogous SIR results using the following:
+The HawkesN data is transformed using the SIR data to be represented by the timepoints associated with each infection event. Moreover, by Theorem~\ref{thrm:SIR}, the estimated parameters from the HawkesN model can be transformed to analogous SIR results using the following:
 \[
 \gamma = \theta, \hspace{10mm}
 \beta = \kappa \theta
