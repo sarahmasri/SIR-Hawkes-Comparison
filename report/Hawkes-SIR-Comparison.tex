@@ -484,9 +484,9 @@ Consider the time period $(t_j^E, t_j^I)$, the time that it takes for an individ
 
 
 
-Now, consider the stoachastic representation of the SEIR model. We aim to connect the intensity of this model to the intesity of the HawkesN process. Note the added `exposed' comparment in the SEIR model in comparison to the more simple SIR model. Individuals associated with this compartment are classified as infectious but not \textit{infected}. In other words, these individuals are carrying and potentially spreading the disease, despite not belonging to the infected compartment.
+Now, consider the stoachastic representation of the SEIR model. We aim to connect the intensity of this model to the intesity of the HawkesN process. Note the added `exposed' comparment in the SEIR model in comparison to the more simple SIR model. Individuals associated with this compartment are classified as infected but not \textit{infectious}. In other words, these individuals are carrying and potentially spreading the disease, despite not belonging to the infected compartment.
 
-By definition, the relevant intensity associated with the stochastic representation of the SEIR model is the rate at which individuals in the population become infectious– or the rate at which indivuals enter the $E$ compartment. Equivalently, the intensity of the stoachastic SEIR model is precisely the rate of change of the cumulative case counts. Note in the following that it continues to hold that $C_t = N - S_t$. 
+By definition, the relevant intensity associated with the stochastic representation of the SEIR model is the rate at which individuals in the population become inftenced– or the rate at which indivuals enter the $E$ compartment. Equivalently, the intensity of the stoachastic SEIR model is precisely the rate of change of the cumulative case counts. Note in the following that it continues to hold that $C_t = N - S_t$. 
 
 \begin{equation}
   \lambda^{E}(t) = \frac{d C_t}{dt} =  -\frac{dS_t}{dt} = \beta \frac{IS}{N}
@@ -498,7 +498,7 @@ We additionally aim to write $I_t$ as the sum of indicators.
   I_t &= C_t - R_t - E_t  \\
   &= \sum_{j \geq 1} \mathbbm{1} (t_j^I < t, t_j^R > t) \\
   &=  \sum_{t_j^I < t} \mathbbm{1} (t_j^I + \tau_j^R > t) \\
-  &=  \sum_{t_j^I < t} \mathbbm{1} (t_j^E + \tau_j^I + \tau_j^R > t) 
+  &=  \sum_{t_j^E + \tau_j^I < t} \mathbbm{1} (t_j^E + \tau_j^I + \tau_j^R > t) 
 \end{align*}
 
 
@@ -506,14 +506,17 @@ We additionally aim to write $I_t$ as the sum of indicators.
 \begin{theorem}\label{thrm:SEIR}
   Suppose the new infections in a stoachastic SEIR process of parameters $\{\beta, a, \gamma, N\}$ follow a point process of intensity $\lambda^E(t)$. Suppose also that the vents in a HawkesN process with parameters $\{\mu, K, \theta, N\}$ have intensity $lambda^H(t)$ with an exponential kernal such that,
   \[
-  \phi(\tau) = \theta e^{-\theta \tau}
+  \phi(\tau) = \theta e^{-\theta \tau}, \hspace{5mm} \text{and,} \theta > a.
   \]
 
-  Let $\tau_I = \{\tau_1^I, \tau_2^I, \ldots\}$ and $\tau_R = \{\tau_1^R, \tau_2^R, \ldots\}$ be the set of times to infection from exposed and times to recover from infected respectively. The expectation of $\lambda^E(t)$ over the wait times is equal to $\lambda^H(t)$:
+  Let $\tau_I = \{\tau_1^I, \tau_2^I, \ldots\}$ and $\tau_R = \{\tau_1^R, \tau_2^R, \ldots\}$ be the set of times to infectious from exposed and times to recover from infectious respectively. The expectation of $\lambda^E(t)$ over the wait times is equal to $\lambda^H(t)$:
+
+  %TODO - be careful between infected and infectious --> go back up and clarify
+
   \[
 \mathbb{E}[\lambda^E(t)] = \lambda^H(t)
   \]
-  when $\mu=0$, $\beta=\frac{a - \theta}{a} \theta$, and $\gamma = \theta$. 
+  when $\mu=0$, $\beta=\frac{\theta - a}{a} \theta$, and $\gamma = \theta$. 
 \end{theorem}
 
 \begin{proof}
@@ -535,20 +538,29 @@ We additionally aim to write $I_t$ as the sum of indicators.
 % \end{align*}
 
 
+
+% - clean up what we're summing over
+% - I can't change the integral with the sum --> this is where the convolution comes from
+
 \begin{align*}
   \lambda^{E}(t) &= \mathbb{E}_{\tau^R} \Big [ \beta \frac{S_t}{N} I_t  \Big ] \\
   &= \mathbb{E}_{\tau^R} \Big [ \beta \frac{S_t}{N}  \sum_{t_j^I < t} \mathbbm{1} (t_j^I + \tau_j^R > t)  \Big ] \\
   &=  \mathbb{E}_{\tau^I} \mathbb{E}_{\tau^R} \Big [ \beta \frac{S_t}{N}  \sum_{t_j^I < t} \mathbbm{1} (t_j^E + \tau_j^I + \tau_j^R > t)  \Big ] \\
-  &=  \sum_{t_j^I < t} \mathbb{E}_{\tau^I} \mathbb{E}_{\tau^R} \Big [ \beta \frac{S_t}{N} \mathbbm{1} (t_j^E + \tau_j^I + \tau_j^R > t)  \Big ] \\
-  &=  \sum_{t_j^I < t} \int_0^\infty \int_0^\infty \beta \frac{S_t}{N}  \mathbbm{1} (t_j^E + \zeta^I + \zeta^R > t)\ r_{\tau_R}(\zeta^R) r_{\tau_I}(\zeta^I) d\zeta^R\ d\zeta^I \\
-  &=  \sum_{t_j^I < t} \beta \frac{S_t}{N} \int_{0}^\infty \int_{t-t_j^E-\zeta^I}^\infty \ r_{\tau_R}(\zeta^R) r_{\tau_I}(\zeta^I) d\zeta^R\ d\zeta^I \\
-  &=  \sum_{t_j^I < t} \beta \frac{S_t}{N} \int_{0}^\infty  e^{-\theta (t - t_j^E - \zeta^I)} r_{\tau_I}(\zeta^I) d\zeta^R\ d\zeta^I \\
-  &=  \sum_{t_j^I < t} \beta \frac{S_t}{N} \int_{0}^\infty  e^{-\theta (t - t_j^E - \zeta^I)} a e^{-a \zeta^I} d\zeta^R\ d\zeta^I \\
-  &=  \sum_{t_j^I < t} \beta \frac{S_t}{N} e^{-\theta (t - t_j^E)} \int_{0}^\infty   a e^{-(a - \theta) \zeta^I} d\zeta^R\ d\zeta^I \\
-  &=  \sum_{t_j^I < t} \beta \frac{S_t}{N} e^{-\theta (t - t_j^E)} \frac{a}{a - \theta} \\
-  &=  \Big ( 1 - \frac{C_t}{N} \Big )  \sum_{t_j^I < t} \frac{a}{a - \theta} \beta e^{-\theta (t - t_j^E)}  \\
+  &= \beta \frac{S_t}{N} \mathbb{E}_{\tau^I} \Big [ \int_0^\infty  \sum_{t_j^E + \tau_j^I < t} \mathbbm{1} (t_j^E + \tau_j^I + \zeta^R > t) r_{\tau^R}(\zeta^R) d \zeta^R  \Big ] \\
+  &= \beta \frac{S_t}{N} \mathbb{E}_{\tau^I}  \Big [ \sum_{t_j^E + \tau_j^I < t} \int_0^\infty  \mathbbm{1} (t_j^E + \tau_j^I + \zeta^R > t) r_{\tau^R}(\zeta^R) d \zeta^R  \Big ] \\
+  &= \beta \frac{S_t}{N} \mathbb{E}_{\tau^I}  \Big [ \sum_{t_j^E + \tau_j^I < t} \int_{t - t_j^E - \tau_j^I}^\infty r_{\tau^R}(\zeta^R) d \zeta^R  \Big ] \\
+  &= \beta \frac{S_t}{N} \mathbb{E}_{\tau^I}  \Big [ \sum_{t_j^E + \tau_j^I < t} e^{-a(t-t_j^E-\tau_j^I)}  \Big ] \\
+  &= \beta \frac{S_t}{N} \int_0^\infty \Big (  \sum_{t_j^E + \zeta^I < t} e^{-a(t-t_j^E-\zeta^I)}  \Big ) r_{\tau^I} (\zeta^I) d\zeta^I \\
+  &= \beta \frac{S_t}{N} \int_0^\infty \Big (  \sum_{t_j^E + \zeta^I < t} e^{-a(t-t_j^E-\zeta^I)}  \Big ) \theta e^{-\theta \zeta^I} d\zeta^I \\
+  &= \beta \frac{S_t}{N}  \theta \int_0^\infty e^{\zeta^I(a-\theta)} \sum_{t_j^E + \zeta^I < t} e^{-a(t-t_j^E)}   d \zeta^I \\
+  &= \beta \frac{S_t}{N}  \theta \int_0^\infty e^{\zeta^I(a-\theta)} \sum_{j \geq 1} \mathbbm{1} (t_j^E + \zeta^I < t) e^{-a(t-t_j^E)}   d \zeta^I \\
+  &= \beta \frac{S_t}{N}  \theta \sum_{j \geq 1} \int_0^\infty e^{\zeta^I(a-\theta)}  \mathbbm{1} (t_j^E + \zeta^I < t) e^{-a(t-t_j^E)}   d \zeta^I \\
+  &= \beta \frac{S_t}{N}  \theta \sum_{j \geq 1}  e^{-a(t-t_j^E)}  \int_0^{t-t_j^E} e^{\zeta^I(a-\theta)}  d  \zeta^I \\
+  &= \beta \frac{S_t}{N}  \theta \sum_{j \geq 1}  e^{-a(t-t_j^E)}  \frac{e^{(t-t_j^E)(a - \theta)} - 1}{a - \theta}\\
+  &= \beta  \frac{S_t}{N} \frac{\theta }{a - \theta } \sum_{j \geq 1}e^{-a(t-t_j^E)}  (e^{(t-t_j^E)(a - \theta)} - 1) \\
 \end{align*}
 
+since it is assumed that $\theta - a > 0$.
 
 \end{proof}
 

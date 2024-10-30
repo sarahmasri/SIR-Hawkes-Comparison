@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.25)  16 OCT 2024 13:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.25)  28 OCT 2024 23:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -676,74 +676,74 @@ Underfull \hbox (badness 10000) in paragraph at lines 368--370
 LaTeX Font Info:    Trying to load font information for U+bbm on input line 389.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [7] [8] [9] [10]
-<../figures/SIR_neg-log-likelihood-plot_beta.png, id=198, 6022.5pt x 6022.5pt>
+) [7] [8] [9] [10] [11]
+<../figures/SIR_neg-log-likelihood-plot_beta.png, id=202, 6022.5pt x 6022.5pt>
 File: ../figures/SIR_neg-log-likelihood-plot_beta.png Graphic file (type png)
 <use ../figures/SIR_neg-log-likelihood-plot_beta.png>
-Package pdftex.def Info: ../figures/SIR_neg-log-likelihood-plot_beta.png  used on input line 592.
+Package pdftex.def Info: ../figures/SIR_neg-log-likelihood-plot_beta.png  used on input line 604.
 (pdftex.def)             Requested size: 224.28072pt x 224.22583pt.
-<../figures/SIR_neg-log-likelihood-plot_gamma.png, id=200, 6022.5pt x 6022.5pt>
+<../figures/SIR_neg-log-likelihood-plot_gamma.png, id=204, 6022.5pt x 6022.5pt>
 File: ../figures/SIR_neg-log-likelihood-plot_gamma.png Graphic file (type png)
 <use ../figures/SIR_neg-log-likelihood-plot_gamma.png>
-Package pdftex.def Info: ../figures/SIR_neg-log-likelihood-plot_gamma.png  used on input line 597.
+Package pdftex.def Info: ../figures/SIR_neg-log-likelihood-plot_gamma.png  used on input line 609.
 (pdftex.def)             Requested size: 224.28072pt x 224.22583pt.
-<../figures/HawkesN_neg-log-likelihood-plot_K.png, id=201, 6022.5pt x 6022.5pt>
+<../figures/HawkesN_neg-log-likelihood-plot_K.png, id=205, 6022.5pt x 6022.5pt>
 File: ../figures/HawkesN_neg-log-likelihood-plot_K.png Graphic file (type png)
 <use ../figures/HawkesN_neg-log-likelihood-plot_K.png>
-Package pdftex.def Info: ../figures/HawkesN_neg-log-likelihood-plot_K.png  used on input line 609.
+Package pdftex.def Info: ../figures/HawkesN_neg-log-likelihood-plot_K.png  used on input line 621.
 (pdftex.def)             Requested size: 224.28072pt x 224.22583pt.
-<../figures/HawkesN_neg-log-likelihood-plot_theta.png, id=202, 6022.5pt x 6022.5pt>
+<../figures/HawkesN_neg-log-likelihood-plot_theta.png, id=206, 6022.5pt x 6022.5pt>
 File: ../figures/HawkesN_neg-log-likelihood-plot_theta.png Graphic file (type png)
 <use ../figures/HawkesN_neg-log-likelihood-plot_theta.png>
-Package pdftex.def Info: ../figures/HawkesN_neg-log-likelihood-plot_theta.png  used on input line 614.
+Package pdftex.def Info: ../figures/HawkesN_neg-log-likelihood-plot_theta.png  used on input line 626.
 (pdftex.def)             Requested size: 224.28072pt x 224.22583pt.
-<../figures/SIR_contour-plot_gamma_beta.png, id=203, 4818.0pt x 4818.0pt>
+<../figures/SIR_contour-plot_gamma_beta.png, id=207, 4818.0pt x 4818.0pt>
 File: ../figures/SIR_contour-plot_gamma_beta.png Graphic file (type png)
 <use ../figures/SIR_contour-plot_gamma_beta.png>
-Package pdftex.def Info: ../figures/SIR_contour-plot_gamma_beta.png  used on input line 625.
+Package pdftex.def Info: ../figures/SIR_contour-plot_gamma_beta.png  used on input line 637.
 (pdftex.def)             Requested size: 249.2025pt x 249.14798pt.
-<../figures/HawkesN_contour-plot_K_theta.png, id=204, 4818.0pt x 4818.0pt>
+<../figures/HawkesN_contour-plot_K_theta.png, id=208, 4818.0pt x 4818.0pt>
 File: ../figures/HawkesN_contour-plot_K_theta.png Graphic file (type png)
 <use ../figures/HawkesN_contour-plot_K_theta.png>
-Package pdftex.def Info: ../figures/HawkesN_contour-plot_K_theta.png  used on input line 630.
+Package pdftex.def Info: ../figures/HawkesN_contour-plot_K_theta.png  used on input line 642.
 (pdftex.def)             Requested size: 249.2025pt x 249.14798pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 643.
+(caption)                particular \caption on input line 655.
 See the caption package documentation for explanation.
 
 
-Overfull \hbox (1.85735pt too wide) in paragraph at lines 645--645
+Overfull \hbox (1.85735pt too wide) in paragraph at lines 657--657
  []|\T1/cmr/bx/n/12 Regression 
  []
 
 
-Overfull \hbox (30.0pt too wide) in paragraph at lines 641--652
+Overfull \hbox (30.0pt too wide) in paragraph at lines 653--664
 []$[]$ 
  []
 
-[11 </Users/sarahmasri/Desktop/Research/MSc/SIR-Hawkes-Comparison/report/../figures/SIR_neg-log-likelihood-plot_beta.png> </Users/sarahmasri/Desktop/Research/MSc/SIR-Hawkes-Comparison/report/../figures/SIR_neg-log-likelihood-plot_gamma.png>] [12 </Users/sarahmasri/Desktop/Research/MSc/SIR-Hawkes-Comparison/report/../figures/HawkesN_neg-log-likelihood-plot_K.png> </Users/sarahmasri/Desktop/Research/MSc/SIR-Hawkes-Comparison/report/../figures/HawkesN_neg-log-likelihood-plot_theta.png> </Users/sarahmasri/Desktop/Research/MSc/SIR-Hawkes-Comparison/report/../figures/SIR_contour-plot_gamma_beta.png> </Users/sarahmasri/Desktop/Research/MSc/SIR-Hawkes-Comparison/report/../figures/HawkesN_contour-plot_K_theta.png>] [13] (/Users/sarahmasri/Desktop/Research/MSc/SIR-Hawkes-Comparison/report/Hawkes-SIR-Comparison.bbl
+[12] [13 </Users/sarahmasri/Desktop/Research/MSc/SIR-Hawkes-Comparison/report/../figures/SIR_neg-log-likelihood-plot_beta.png> </Users/sarahmasri/Desktop/Research/MSc/SIR-Hawkes-Comparison/report/../figures/SIR_neg-log-likelihood-plot_gamma.png> </Users/sarahmasri/Desktop/Research/MSc/SIR-Hawkes-Comparison/report/../figures/HawkesN_neg-log-likelihood-plot_K.png> </Users/sarahmasri/Desktop/Research/MSc/SIR-Hawkes-Comparison/report/../figures/HawkesN_neg-log-likelihood-plot_theta.png>] [14 </Users/sarahmasri/Desktop/Research/MSc/SIR-Hawkes-Comparison/report/../figures/SIR_contour-plot_gamma_beta.png> </Users/sarahmasri/Desktop/Research/MSc/SIR-Hawkes-Comparison/report/../figures/HawkesN_contour-plot_K_theta.png>] (/Users/sarahmasri/Desktop/Research/MSc/SIR-Hawkes-Comparison/report/Hawkes-SIR-Comparison.bbl
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 23.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-) [14]) [15] (/Users/sarahmasri/Desktop/Research/MSc/SIR-Hawkes-Comparison/report/Hawkes-SIR-Comparison.aux)
+) [15]) [16] (/Users/sarahmasri/Desktop/Research/MSc/SIR-Hawkes-Comparison/report/Hawkes-SIR-Comparison.aux)
 Package rerunfilecheck Info: File `Hawkes-SIR-Comparison.out' has not changed.
 (rerunfilecheck)             Checksum: F4605F982FBCB48AE6AE8ECEE428986D;1953.
  ) 
 Here is how much of TeX's memory you used:
- 22394 strings out of 478994
- 408962 string characters out of 5858184
- 779247 words of memory out of 5000000
+ 22395 strings out of 478994
+ 408969 string characters out of 5858184
+ 782247 words of memory out of 5000000
  39330 multiletter control sequences out of 15000+600000
  422194 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  87i,12n,88p,801b,621s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc} </Users/sarahmasri/Library/texlive/2021/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on /Users/sarahmasri/Desktop/Research/MSc/SIR-Hawkes-Comparison/report/Hawkes-SIR-Comparison.pdf (15 pages, 4034923 bytes).
+Output written on /Users/sarahmasri/Desktop/Research/MSc/SIR-Hawkes-Comparison/report/Hawkes-SIR-Comparison.pdf (16 pages, 4035725 bytes).
 PDF statistics:
- 341 PDF objects out of 1000 (max. 8388607)
- 288 compressed objects within 3 object streams
- 82 named destinations out of 1000 (max. 500000)
+ 345 PDF objects out of 1000 (max. 8388607)
+ 291 compressed objects within 3 object streams
+ 83 named destinations out of 1000 (max. 500000)
  163 words of extra memory for PDF output out of 10000 (max. 10000000)
 
