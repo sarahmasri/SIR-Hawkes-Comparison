@@ -539,28 +539,75 @@ We additionally aim to write $I_t$ as the sum of indicators.
 
 
 
+Before deriving $\lambda^E(t)$, it is necessary to complete intermediate steps. 
+
+Consider $\mathbb{E}_{\tau^R}\Big [ \sum_{t_j^E + \tau_j^I < t} \mathbbm{1} (t_j^E + \tau_j^I + \tau_j^R > t) \Big ]$. 
+
+\begin{align*}
+  \mathbb{E}_{\tau^R}\Big [ \sum_{t_j^E + \tau_j^I < t} \mathbbm{1} (t_j^E + \tau_j^I + \tau_j^R > t) \Big ]
+  &= \int_0^\infty  \sum_{t_j^E + \tau_j^I < t} \mathbbm{1} (t_j^E + \tau_j^I + \zeta^R > t) r_{\tau^R} (\zeta^R) d\zeta^R \\
+  &= \sum_{t_j^E + \tau_j^I < t}  \int_0^\infty  \mathbbm{1} (t_j^E + \tau_j^I + \zeta^R > t) r_{\tau^R} (\zeta^R) d\zeta^R \\
+  &= \sum_{t_j^E + \tau_j^I < t}  \int_{t - t_j^E - \tau_j^I}^\infty  \mathbbm{1} (t_j^E + \tau_j^I + \zeta^R > t) r_{\tau^R} (\zeta^R) d\zeta^R \\
+  &= \sum_{t_j^E + \tau_j^I < t}  e^{-a(t - t_j^E - \tau_j^I)}
+\end{align*}
+
+
+Additionally, 
+\begin{align*}
+  \mathbb{E}_{\tau^I} \Big [ \sum_{t_j^E + \tau_j^I < t}  e^{-a(t - t_j^E - \tau_j^I)} \Big ] 
+  &= \int_0^\infty \sum_{j \geq 1} \mathbbm{1}(t_j^E + \tau_j^I < t) e^{- a(t - t_j^E - \zeta^I)} r_{\tau^I}(\zeta^I) d\zeta^I \\
+  &= \sum_{j \geq 1} \int_0^{t - t_j^E} e^{- a(t - t_j^E - \zeta^I)} \theta e^{-\theta \zeta^I}  d\zeta^I \\
+  &= \sum_{j \geq 1} \int_0^{t - t_j^E} e^{- a(t - t_j^E - \zeta^I)} \theta e^{-\theta \zeta^I}  d\zeta^I \\
+  &= \sum_{j \geq 1} \theta e^{- a(t - t_j^E)} \int_0^{t - t_j^E}  e^{\zeta^I(a-\theta )}  d\zeta^I \\
+  &=  \sum_{j \geq 1} \frac{\theta}{a - \theta}  e^{- a(t - t_j^E)}  \Big ( e^{(a-\theta )(t - t_j^E)} - 1  \Big )\\
+  &=   \sum_{j \geq 1}  \frac{\theta}{a - \theta}  \Big ( e^{\theta (t - t_j^E)} - e^{- a(t - t_j^E)}  \Big )\\
+\end{align*}
+
+
+
+Recall that $I_t = \sum_{t_j^E + \tau_j^I < t} \mathbbm{1} (t_j^E + \tau_j^I + \tau_j^R > t)$. We find that,
+
+\begin{align*}
+  \lambda^E(t) &= \mathbb{E}[\beta \frac{S_t}{N} I_t] \\
+  &= \beta \frac{S_t}{N} \mathbb{E}_{\tau^I} \mathbb{E}_{\tau^R}\Big [ \sum_{t_j^E + \tau_j^I < t} \mathbbm{1} (t_j^E + \tau_j^I + \tau_j^R > t) \Big ] \\
+  &= \beta \frac{S_t}{N} \mathbb{E}_{\tau^I} \Big [ \sum_{t_j^E + \tau_j^I < t}  e^{-a(t - t_j^E - \tau_j^I)} \Big ] \\
+  &= \beta \frac{S_t}{N} \sum_{j \geq 1}  \frac{\theta}{a - \theta}  \Big ( e^{-\theta (t - t_j^E)} - e^{- a(t - t_j^E)}  \Big ) \\
+  &= \beta \frac{S_t}{N} \sum_{j \geq 1}  \Big ( e^{-a(t - t_j^E)} \star \frac{\theta}{a} e^{-\theta(t - t_j^E)} \Big ),
+\end{align*}
+
+where the symbol $\star$ denotes convolution. 
+
+
+
+
+
+
+
+
+
+
 % - clean up what we're summing over
 % - I can't change the integral with the sum --> this is where the convolution comes from
 
-\begin{align*}
-  \lambda^{E}(t) &= \mathbb{E}_{\tau^R} \Big [ \beta \frac{S_t}{N} I_t  \Big ] \\
-  &= \mathbb{E}_{\tau^R} \Big [ \beta \frac{S_t}{N}  \sum_{t_j^I < t} \mathbbm{1} (t_j^I + \tau_j^R > t)  \Big ] \\
-  &=  \mathbb{E}_{\tau^I} \mathbb{E}_{\tau^R} \Big [ \beta \frac{S_t}{N}  \sum_{t_j^I < t} \mathbbm{1} (t_j^E + \tau_j^I + \tau_j^R > t)  \Big ] \\
-  &= \beta \frac{S_t}{N} \mathbb{E}_{\tau^I} \Big [ \int_0^\infty  \sum_{t_j^E + \tau_j^I < t} \mathbbm{1} (t_j^E + \tau_j^I + \zeta^R > t) r_{\tau^R}(\zeta^R) d \zeta^R  \Big ] \\
-  &= \beta \frac{S_t}{N} \mathbb{E}_{\tau^I}  \Big [ \sum_{t_j^E + \tau_j^I < t} \int_0^\infty  \mathbbm{1} (t_j^E + \tau_j^I + \zeta^R > t) r_{\tau^R}(\zeta^R) d \zeta^R  \Big ] \\
-  &= \beta \frac{S_t}{N} \mathbb{E}_{\tau^I}  \Big [ \sum_{t_j^E + \tau_j^I < t} \int_{t - t_j^E - \tau_j^I}^\infty r_{\tau^R}(\zeta^R) d \zeta^R  \Big ] \\
-  &= \beta \frac{S_t}{N} \mathbb{E}_{\tau^I}  \Big [ \sum_{t_j^E + \tau_j^I < t} e^{-a(t-t_j^E-\tau_j^I)}  \Big ] \\
-  &= \beta \frac{S_t}{N} \int_0^\infty \Big (  \sum_{t_j^E + \zeta^I < t} e^{-a(t-t_j^E-\zeta^I)}  \Big ) r_{\tau^I} (\zeta^I) d\zeta^I \\
-  &= \beta \frac{S_t}{N} \int_0^\infty \Big (  \sum_{t_j^E + \zeta^I < t} e^{-a(t-t_j^E-\zeta^I)}  \Big ) \theta e^{-\theta \zeta^I} d\zeta^I \\
-  &= \beta \frac{S_t}{N}  \theta \int_0^\infty e^{\zeta^I(a-\theta)} \sum_{t_j^E + \zeta^I < t} e^{-a(t-t_j^E)}   d \zeta^I \\
-  &= \beta \frac{S_t}{N}  \theta \int_0^\infty e^{\zeta^I(a-\theta)} \sum_{j \geq 1} \mathbbm{1} (t_j^E + \zeta^I < t) e^{-a(t-t_j^E)}   d \zeta^I \\
-  &= \beta \frac{S_t}{N}  \theta \sum_{j \geq 1} \int_0^\infty e^{\zeta^I(a-\theta)}  \mathbbm{1} (t_j^E + \zeta^I < t) e^{-a(t-t_j^E)}   d \zeta^I \\
-  &= \beta \frac{S_t}{N}  \theta \sum_{j \geq 1}  e^{-a(t-t_j^E)}  \int_0^{t-t_j^E} e^{\zeta^I(a-\theta)}  d  \zeta^I \\
-  &= \beta \frac{S_t}{N}  \theta \sum_{j \geq 1}  e^{-a(t-t_j^E)}  \frac{e^{(t-t_j^E)(a - \theta)} - 1}{a - \theta}\\
-  &= \beta  \frac{S_t}{N} \frac{\theta }{a - \theta } \sum_{j \geq 1}e^{-a(t-t_j^E)}  (e^{(t-t_j^E)(a - \theta)} - 1) \\
-\end{align*}
+% \begin{align*}
+%   \lambda^{E}(t) &= \mathbb{E}_{\tau^R} \Big [ \beta \frac{S_t}{N} I_t  \Big ] \\
+%   &= \mathbb{E}_{\tau^R} \Big [ \beta \frac{S_t}{N}  \sum_{t_j^I < t} \mathbbm{1} (t_j^I + \tau_j^R > t)  \Big ] \\
+%   &=  \mathbb{E}_{\tau^I} \mathbb{E}_{\tau^R} \Big [ \beta \frac{S_t}{N}  \sum_{t_j^I < t} \mathbbm{1} (t_j^E + \tau_j^I + \tau_j^R > t)  \Big ] \\
+%   &= \beta \frac{S_t}{N} \mathbb{E}_{\tau^I} \Big [ \int_0^\infty  \sum_{t_j^E + \tau_j^I < t} \mathbbm{1} (t_j^E + \tau_j^I + \zeta^R > t) r_{\tau^R}(\zeta^R) d \zeta^R  \Big ] \\
+%   &= \beta \frac{S_t}{N} \mathbb{E}_{\tau^I}  \Big [ \sum_{t_j^E + \tau_j^I < t} \int_0^\infty  \mathbbm{1} (t_j^E + \tau_j^I + \zeta^R > t) r_{\tau^R}(\zeta^R) d \zeta^R  \Big ] \\
+%   &= \beta \frac{S_t}{N} \mathbb{E}_{\tau^I}  \Big [ \sum_{t_j^E + \tau_j^I < t} \int_{t - t_j^E - \tau_j^I}^\infty r_{\tau^R}(\zeta^R) d \zeta^R  \Big ] \\
+%   &= \beta \frac{S_t}{N} \mathbb{E}_{\tau^I}  \Big [ \sum_{t_j^E + \tau_j^I < t} e^{-a(t-t_j^E-\tau_j^I)}  \Big ] \\
+%   &= \beta \frac{S_t}{N} \int_0^\infty \Big (  \sum_{t_j^E + \zeta^I < t} e^{-a(t-t_j^E-\zeta^I)}  \Big ) r_{\tau^I} (\zeta^I) d\zeta^I \\
+%   &= \beta \frac{S_t}{N} \int_0^\infty \Big (  \sum_{t_j^E + \zeta^I < t} e^{-a(t-t_j^E-\zeta^I)}  \Big ) \theta e^{-\theta \zeta^I} d\zeta^I \\
+%   &= \beta \frac{S_t}{N}  \theta \int_0^\infty e^{\zeta^I(a-\theta)} \sum_{t_j^E + \zeta^I < t} e^{-a(t-t_j^E)}   d \zeta^I \\
+%   &= \beta \frac{S_t}{N}  \theta \int_0^\infty e^{\zeta^I(a-\theta)} \sum_{j \geq 1} \mathbbm{1} (t_j^E + \zeta^I < t) e^{-a(t-t_j^E)}   d \zeta^I \\
+%   &= \beta \frac{S_t}{N}  \theta \sum_{j \geq 1} \int_0^\infty e^{\zeta^I(a-\theta)}  \mathbbm{1} (t_j^E + \zeta^I < t) e^{-a(t-t_j^E)}   d \zeta^I \\
+%   &= \beta \frac{S_t}{N}  \theta \sum_{j \geq 1}  e^{-a(t-t_j^E)}  \int_0^{t-t_j^E} e^{\zeta^I(a-\theta)}  d  \zeta^I \\
+%   &= \beta \frac{S_t}{N}  \theta \sum_{j \geq 1}  e^{-a(t-t_j^E)}  \frac{e^{(t-t_j^E)(a - \theta)} - 1}{a - \theta}\\
+%   &= \beta  \frac{S_t}{N} \frac{\theta }{a - \theta } \sum_{j \geq 1}e^{-a(t-t_j^E)}  (e^{(t-t_j^E)(a - \theta)} - 1) 
+% \end{align*}
 
-since it is assumed that $\theta - a > 0$.
+% since it is assumed that $\theta - a > 0$.
 
 \end{proof}
 
